@@ -6,24 +6,14 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:23:54 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/19 14:51:08 by lupetill         ###   ########.fr       */
+/*   Updated: 2025/11/23 10:49:28 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-int	ft_isalpha(char *str)
+int	ft_isalpha(int c)
 {
-	int	i;
-
-	i = 0;
-	while (*(str + i) != '\0')
-	{
-		if (*(str + i) < 'a' || *(str + i) > 'z')
-		{
-			if (*(str + i) < 'A' || *(str + i) > 'Z')
-				return (0);
-		}
-		i++;
-	}
+	if (c < 'a' || c > 'z')
+		if (c < 'A' || c > 'Z')
+			return (0);
 	return (1);
 }
