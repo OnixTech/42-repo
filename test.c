@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:42:39 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/23 11:33:07 by luciano          ###   ########.fr       */
+/*   Updated: 2025/11/24 09:43:45 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,31 +22,35 @@ int	main(void)
 	printf("#_ FUNTION isalpha:\n\tinputs -> 'a' 'b' 'c'...'z'\n");
 	while(c[i++])
 	{
-		if (ft_isalpha(c))
+		if (ft_isalpha(c[i]))
 			i++;
 		else
 		{
-			printf("FAIL IN -> %s\n", c);
+			printf("FAIL IN -> %c\n", c[i]);
 			break;
 		}
 		if (!c[i])
 			printf("--PASS--\n");
         }
-	c = "0123456789\nabc12";
+	c = "0 0123456789´?*#!&%712";
 	i = 0;
-	printf("\tinputs -> '0123456789' new line character 'abc12\n");
+	printf("\tinputs -> 0123456789´?*#!&712\n");
 	while(c[i++])
 	{
-		if (ft_isalpha(c))
+		if (!c[i])
+		{
+			printf("--PASS--\n");
+			break;
+		}
+		if (!ft_isalpha(c[i]))
 			i++;
 		else
 		{
-			printf("FAIL IN -> %s\n", c);
+			printf("FAIL IN -> %c\n", c[i]);
 			break;
 		}
-		if (!c[i])
-			printf("--PASS--\n");
         }
+/*
 	if (ft_isdigit(c))
                 printf("ft_ isalpha -> %s = is digit\n", c);
 	c = "1";
@@ -57,6 +61,6 @@ int	main(void)
 	a = *c;
 	if (ft_isalnum(a))
                 printf("ft_ isalnum -> %s = is alphanumeric\n", c);
-	return (0);
+*/	return (0);
 }
 
