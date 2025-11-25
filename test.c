@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:42:39 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/25 13:21:23 by luciano          ###   ########.fr       */
+/*   Updated: 2025/11/25 21:06:23 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -19,6 +19,7 @@ void	test_alnum(void);
 void	test_isascii(void);
 void	test_isprint(void);
 void	test_strlen(void);
+void	test_memset(void);
 
 int	main(void)
 {
@@ -28,6 +29,7 @@ int	main(void)
 	test_isascii();
 	test_isprint();
 	test_strlen();
+	test_memset();
 	return (0);
 }
 
@@ -224,8 +226,8 @@ void	test_strlen(void)
 	else
 	{
 			printf("\t**FAIL**\n");
-			printf("\tstrlen ->    %i\n", strlen(str));
-			printf("\tft_strlen -> %i\n", ft_strlen(str));
+			printf("\tstrlen ->    %lu\n", strlen(str));
+			printf("\tft_strlen -> %zu\n", ft_strlen(str));
 	}
 	str = "";
 	printf("\tinputs -> '' (empty string)\n");
@@ -234,7 +236,39 @@ void	test_strlen(void)
 	else
 	{
 			printf("\t**FAIL**\n");
-			printf("\tstrlen ->    %i\n", strlen(str));
-			printf("\tft_strlen -> %i\n", ft_strlen(str));
+			printf("\tstrlen ->    %lu\n", strlen(str));
+			printf("\tft_strlen -> %zu\n", ft_strlen(str));
 	}	
+}
+
+void	test_memset(void)
+{
+	int	n;
+	int	arr1[10];
+	int	arr2[10];
+	int	i;	
+
+	n = 10;
+	printf("#_ FUNTION memset:\n\tinput -> arr[10], 0xA, sizeof(arr)\n");
+	i = -1;
+	while(++i < n)
+	{
+		arr1[i] = 0x00;
+		arr2[i] = 0x01;	
+	}
+	memset(arr1, 0x0A, sizeof(arr1));
+	ft_memset(arr2, 0x0A, sizeof(arr2));
+	if (memcmp(arr1, arr2, sizeof(arr1)) == 0)
+			printf("\t--PASS--\n");
+	else
+	{
+			printf("\t**FAIL**\n");
+			i = 0;
+			while(i < n)
+				printf("%x", arr1[i++]);
+			printf("\n");
+			i = 0;
+			while(i < n)
+				printf("%x", arr2[i++]);
+	}
 }
