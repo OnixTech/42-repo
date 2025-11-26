@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:42:39 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/25 22:28:56 by luciano          ###   ########.fr       */
+/*   Updated: 2025/11/26 09:35:37 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -21,6 +21,7 @@ void	test_isprint(void);
 void	test_strlen(void);
 void	test_memset(void);
 void	test_bzero(void);
+void	test_memcpy(void);
 
 int	main(void)
 {
@@ -32,6 +33,7 @@ int	main(void)
 	test_strlen();
 	test_memset();
 	test_bzero();
+	test_memcpy();
 	return (0);
 }
 
@@ -320,5 +322,48 @@ void	test_bzero(void)
 			i = 0;
 			while(i < n)
 				printf("%x", arr2[i++]);
+	}
+}
+
+void	test_memcpy(void)
+{
+	unsigned char	src[10];
+	unsigned char	dst1[10];
+	unsigned char	dst2[10];
+	int	i;	
+
+	printf("#_ FUNTION memcpy:\n\tinput -> dst[10], src = 0 1 2...9, sizeof(dst)\n");
+	i = 0;
+	while(i < 10)
+	{
+		dst1[i] = 0xff;
+		dst2[i] = 0xff;
+		src[i] = 0 + i;
+		i++;	
+	}
+	if (memcmp((char *)memcpy(dst1, src, sizeof(dst1)), (char *)ft_memcpy(dst2, src, sizeof(dst2)), sizeof(dst1)) == 0)
+	{
+			printf("\t--PASS--\n");
+			i = 0;
+			printf("\tmemcpy ->    ");
+			while(i < 10)
+				printf("%x", dst1[i++]);
+			printf("\n");
+			printf("\tft_memcpy -> ");
+			i = 0;
+			while(i < 10)
+				printf("%x", dst2[i++]);
+			printf("\n");
+	}
+	else
+	{
+			printf("\t**FAIL**\n");
+			i = 0;
+			while(i < 10)
+				printf("%c", dst1[i++]);
+			printf("\n");
+			i = 0;
+			while(i < 10)
+				printf("%c", dst2[i++]);
 	}
 }
