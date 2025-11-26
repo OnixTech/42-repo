@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:42:39 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/26 09:35:37 by luciano          ###   ########.fr       */
+/*   Updated: 2025/11/26 15:59:44 by lupetill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,6 +22,7 @@ void	test_strlen(void);
 void	test_memset(void);
 void	test_bzero(void);
 void	test_memcpy(void);
+void	test_memmove(void);
 
 int	main(void)
 {
@@ -34,6 +35,7 @@ int	main(void)
 	test_memset();
 	test_bzero();
 	test_memcpy();
+	test_memmove();
 	return (0);
 }
 
@@ -44,7 +46,7 @@ void test_alpha(void)
 	
 	i = 0;
 	c = "abcdefghijklmnopqrstuvwxyz";
-	printf("#_ FUNTION isalpha:\n\tinputs -> 'a' 'b' 'c'...'z'\n");
+	printf("#_ FUNTION isalpha:\n\t*_inputs -> 'a' 'b' 'c'...'z'\n");
 	while(c[i++])
 	{
 		if (ft_isalpha(c[i]))
@@ -59,7 +61,7 @@ void test_alpha(void)
 	}
 	i = 0;
 	c = "0 0123456789´?*#!&%712";
-	printf("\tinputs -> 0123456789´?*#!&712\n");
+	printf("\t*_inputs -> 0123456789´?*#!&712\n");
 	while(c[i++])
 	{
 		if (!c[i])
@@ -84,7 +86,7 @@ void test_digit(void)
 	
 	i = 0;
 	c = "0123456789";
-	printf("#_ FUNTION isdigit:\n\tinputs -> '1' '2' '3'...'0'\n");
+	printf("#_ FUNTION isdigit:\n\t*_inputs -> '1' '2' '3'...'0'\n");
 	while(c[i++])
 	{
 		if (ft_isdigit(c[i]))
@@ -99,7 +101,7 @@ void test_digit(void)
 	}
 	i = 0;
 	c = "abcdefghijklmnopqtuvwxyz´?*#!&";
-	printf("\tinputs -> abcdefghijklmnopqtuvwxyz´?*#!&\n");
+	printf("\t*_inputs -> abcdefghijklmnopqtuvwxyz´?*#!&\n");
 	while(c[i++])
 	{
 		if (!c[i])
@@ -124,7 +126,7 @@ void test_alnum(void)
 	
 	i = 0;
 	c = "01d2b34a56cz789";
-	printf("#_ FUNTION isalnum:\n\tinputs -> 01d2b34a56cz789\n");
+	printf("#_ FUNTION isalnum:\n\t*_inputs -> 01d2b34a56cz789\n");
 	while(c[i])
 	{
 		if (ft_isalnum(c[i]))
@@ -139,7 +141,7 @@ void test_alnum(void)
 	}
 	i = 0;
 	c = "();,.§´?*#!&";
-	printf("\tinputs -> ();,.§´?*#!&\n");
+	printf("\t*_inputs -> ();,.§´?*#!&\n");
 	while(c[i])
 	{
 		if (!ft_isalnum(c[i]))
@@ -165,7 +167,7 @@ void	test_isascii(void)
 	i = -1;
 	while(i++ < 127)
 		c[i] = i;
-	printf("#_ FUNTION isascii:\n\tinputs -> '0' '1' '2'...'127'\n");
+	printf("#_ FUNTION isascii:\n\t*_inputs -> '0' '1' '2'...'127'\n");
 	i = 0;
 	while(i < 128)
 	{
@@ -179,7 +181,7 @@ void	test_isascii(void)
 		if (i == 128)
 			printf("\t--PASS--\n");
 	}
-	printf("\tinput -> '-1' '128'\n");
+	printf("\t*_input -> '-1' '128'\n");
 	if (!ft_isascii(-1))
 		if(!ft_isascii(128))
 			printf("\t--PASS--\n");
@@ -193,7 +195,7 @@ void	test_isprint(void)
 	i = 31;
 	while(i++ < 127)
 		c[i - 32] = i;
-	printf("#_ FUNTION isprint:\n\tinputs -> '32' '33' '34'...'126'\n");
+	printf("#_ FUNTION isprint:\n\t*_inputs -> '32' '33' '34'...'126'\n");
 	i = 32;
 	while(i < 127)
 	{
@@ -207,7 +209,7 @@ void	test_isprint(void)
 		if (i == 127)
 			printf("\t--PASS--\n");
 	}
-	printf("\tinput -> '31' '127'\n");
+	printf("\t*_input -> '31' '127'\n");
 	if (!ft_isprint(31))
 	{
 		if(!ft_isprint(127))
@@ -224,7 +226,7 @@ void	test_strlen(void)
 	char	*str;
 	
 	str = "Hola que tal";
-	printf("#_ FUNTION strlen:\n\tinput -> Hola que tal\n");
+	printf("#_ FUNTION strlen:\n\t*_input -> Hola que tal\n");
 	if (strlen(str) == ft_strlen(str))
 			printf("\t--PASS--\n");
 	else
@@ -234,7 +236,7 @@ void	test_strlen(void)
 			printf("\tft_strlen -> %zu\n", ft_strlen(str));
 	}
 	str = "";
-	printf("\tinputs -> '' (empty string)\n");
+	printf("\t*_inputs -> '' (empty string)\n");
 	if (strlen(str) == ft_strlen(str))
 			printf("\t--PASS--\n");
 	else
@@ -253,7 +255,7 @@ void	test_memset(void)
 	int	i;	
 
 	n = 10;
-	printf("#_ FUNTION memset:\n\tinput -> arr[10], 0xA, sizeof(arr)\n");
+	printf("#_ FUNTION memset:\n\t*_input -> arr[10], 0xA, sizeof(arr)\n");
 	i = -1;
 	while(++i < n)
 	{
@@ -285,7 +287,7 @@ void	test_bzero(void)
 	int	i;	
 
 	n = 10;
-	printf("#_ FUNTION bzero:\n\tinput -> arr[10], sizeof(arr)\n");
+	printf("#_ FUNTION bzero:\n\t*_input -> arr[10], sizeof(arr)\n");
 	i = -1;
 	while(++i < n)
 	{
@@ -309,7 +311,7 @@ void	test_bzero(void)
 	}
 	bzero(arr1, (0));
 	ft_bzero(arr2, (0));
-	printf("\tinput -> arr[10], 0\n");
+	printf("\t*_input -> arr[10], 0\n");
 	if (memcmp(arr1, arr2, sizeof(arr1)) == 0)
 			printf("\t--PASS--\n");
 	else
@@ -332,7 +334,7 @@ void	test_memcpy(void)
 	unsigned char	dst2[10];
 	int	i;	
 
-	printf("#_ FUNTION memcpy:\n\tinput -> dst[10], src = 0 1 2...9, sizeof(dst)\n");
+	printf("#_ FUNTION memcpy:\n\t*_input -> dst[10], src = 0 1 2...9, sizeof(dst)\n");
 	i = 0;
 	while(i < 10)
 	{
@@ -365,5 +367,107 @@ void	test_memcpy(void)
 			i = 0;
 			while(i < 10)
 				printf("%c", dst2[i++]);
+	}
+}
+
+void	test_memmove(void)
+{
+	unsigned char	src[10];
+	unsigned char	dst1[10];
+	unsigned char	dst2[10];
+	unsigned char	*d1;
+	unsigned char	*d2;
+	int	i;	
+
+	printf("#_ FUNTION memmove:\n\t*_input -> dst = KLMNOPQRST, src = ABCDEFGHIJ, 10\n");
+	i = 0;
+	while(i < 10)
+	{
+		src[i] = 'A' + i;
+		dst1[i]= 'K' + i;
+		dst2[i]= 'K' + i;
+		i++;
+	}
+	i = 0;
+	printf("\tBefore call memmove:\n");
+	printf("\tmemmove ->    src -> ");
+	while(i < 10)
+		printf("%c", src[i++]);
+	i = 0;
+	printf(" dst -> ");
+	while(i < 10)
+		printf("%c", dst1[i++]);
+	printf("\n");
+	printf("\tft_memmove -> src -> ");
+	i = 0;
+	while(i < 10)
+		printf("%c", src[i++]);
+	i = 0;
+	printf("\tdst -> ");
+	while(i < 10)
+		printf("%c", dst2[i++]);
+	printf("\n");
+	if (memcmp((char *)memmove(dst1, src, 10), (char *)ft_memmove(dst2, src, 10), 10) == 0)
+	{
+			printf("\tAfter call memmove:\n");
+			i = 0;
+			printf("\tmemmove ->    src -> ");
+			while(i < 10)
+				printf("%c", src[i++]);
+			i = 0;
+			printf(" dst -> ");
+			while(i < 10)
+				printf("%c", dst1[i++]);
+			printf("\n");
+			printf("\tft_memmove -> src -> ");
+			i = 0;
+			while(i < 10)
+				printf("%c", src[i++]);
+			i = 0;
+			printf("\tdst -> ");
+			while(i < 10)
+				printf("%c", dst2[i++]);
+			printf("\n");
+			printf("\t--PASS--\n");
+	}
+	else
+	{
+			printf("\t**FAIL**\n");
+			i = 0;
+			while(i < 10)
+				printf("%c", dst1[i++]);
+			printf("\n");
+			i = 0;
+			while(i < 10)
+				printf("%c", dst2[i++]);
+			printf("\n");
+	}
+	d1 = &src[6];
+	d2 = &src[6];
+	printf("\t*_input -> dst = &src[6], src = ABCDEFGHIJ, 10\n");
+	if (memcmp((char *)memmove(d1, src, 3), (char *)ft_memmove(d2, src, 10), 3) == 0)
+	{
+			printf("\t--PASS--\n");
+			i = 0;
+			printf("\tmemmove ->    ");
+			while(i < 10)
+				printf("%c", d1[i++]);
+			printf("\n");
+			printf("\tft_memmove -> ");
+			i = 0;
+			while(i < 10)
+				printf("%c", d2[i++]);
+			printf("\n");
+	}
+	else
+	{
+			printf("\t**FAIL**\n");
+			i = 0;
+			while(i < 10)
+				printf("%c", d1[i++]);
+			printf("\n");
+			i = 0;
+			while(i < 10)
+				printf("%c", d2[i++]);
 	}
 }
