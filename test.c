@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:42:39 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/27 10:24:43 by luciano          ###   ########.fr       */
+/*   Updated: 2025/11/30 21:11:22 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -26,6 +26,9 @@ void	test_memcpy(void);
 void	test_memmove(void);
 void	test_strlcpy(void);
 void	test_strlcat(void);
+void	test_toupper(void);
+void	test_tolower(void);
+void	test_strchr(void);
 
 int	main(void)
 {
@@ -41,6 +44,9 @@ int	main(void)
 	test_memmove();
 	test_strlcpy();
 	test_strlcat();
+	test_toupper();
+	test_tolower();
+	test_strchr();
 	return (0);
 }
 
@@ -379,6 +385,8 @@ void	test_memcpy(void)
 void	test_memmove(void)
 {
 	unsigned char	src[10];
+	unsigned char	src1[] = {"ABCDEFGHIJ"};
+	unsigned char	src2[] = {"ABCDEFGHIJ"};
 	unsigned char	dst1[10];
 	unsigned char	dst2[10];
 	unsigned char	*d1;
@@ -449,21 +457,21 @@ void	test_memmove(void)
 			printf("%c", dst2[i++]);
 		printf("\n");
 	}
-	d1 = &src[6];
-	d2 = &src[6];
-	printf("\t*_input -> dst = &src[6], src = ABCDEFGHIJ, 10\n");
-	if (memcmp((char *)memmove(d1, src, 3), (char *)ft_memmove(d2, src, 10),
+	d1 = &src1[6];
+	d2 = &src2[6];
+	printf("\t*_input -> dst = &src[6], src = ABCDEFGHIJ, 3\n");
+	if (memcmp((char *)memmove(d1, src1, 3), (char *)ft_memmove(d2, src2, 3),
 			3) == 0)
 	{
 		printf("\t--PASS--\n");
 		i = 0;
 		printf("\tmemmove ->    ");
-		while (i < 10)
+		while (i < 3)
 			printf("%c", d1[i++]);
 		printf("\n");
 		printf("\tft_memmove -> ");
 		i = 0;
-		while (i < 10)
+		while (i < 3)
 			printf("%c", d2[i++]);
 		printf("\n");
 	}
@@ -471,11 +479,11 @@ void	test_memmove(void)
 	{
 		printf("\t**FAIL**\n");
 		i = 0;
-		while (i < 10)
+		while (i < 3)
 			printf("%c", d1[i++]);
 		printf("\n");
 		i = 0;
-		while (i < 10)
+		while (i < 3)
 			printf("%c", d2[i++]);
 	}
 }
@@ -483,28 +491,35 @@ void	test_memmove(void)
 void	test_strlcpy(void)
 {
 	char			dest_size;
-	char			dest1[6];
-	char			dest2[6];
-	char			src[] = {"Hola"};
-	unsigned int	a;
-	unsigned int	b;
+	char			dest1[8];
+	char			dest2[8];
+	char			src[] = {"DEFG"};
+	size_t	a;
+	size_t	b;
+	int	i;
 
-	dest_size = 6;
+	dest_size = 8;
+	while (i < 3)
+	{
+		dest1[i] = 'A' + i;
+		dest2[i] = 'A' + i;
+		i++;
+	}
 	a = strlcpy(&dest1[0], &src[0], dest_size);
 	b = ft_strlcpy(&dest2[0], &src[0], dest_size);
-	printf("#_ FUNTION strlcpy:\n\t*_input -> dst[6], src = Hola, n = 6\n");
+	printf("#_ FUNTION strlcpy:\n\t*_input -> dst[8] = ABC, src = DEFG, n = 4\n");
 	if (strcmp(dest1, dest2) == 0)
 	{
-		printf("\tstrlcpy return -> %i\n", a);
+		printf("\tstrlcpy return -> %zu\n", a);
 		printf("\tdst = %s\n", dest1);
-		printf("\tft_strlcpy return -> %i\n", b);
+		printf("\tft_strlcpy return -> %zu\n", b);
 		printf("\tdst = %s\n", dest2);
 		printf("\t--PASS--\n");
 	}
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn -> %i", b);
+		printf("\treturn -> %zu", b);
 		printf("\ndst = %s", dest2);
 	}
 }
@@ -512,21 +527,42 @@ void	test_strlcpy(void)
 void	test_strlcat(void)
 {
 	char			dest_size;
-	dest_size = 17;
 	char			dest_size2;
-	dest_size2 = 19;
-	char			dest1[dest_size] = {"Hola, como"};
-	char			dest2[dest_size] = {"Hola, como"};
-	char			dest3[dest_size2] = {"Hola, como esta el"};
-	char			dest4[dest_size2] = {"Hola, como esta el"};
-	char			src[] = {"estas?"};
-	char			src2[] = {"esta el nene?"};
+	char			str1[] = {"Hola, como"};
+	char			str2[] = {"Hola, como esta el"};
+	char			dest1[18];
+	char			dest2[18];
+	char			dest3[28];
+	char			dest4[28];
+	char			src[] = {" estas?"};
+	char			src2[] = {" el nene?"};
 	unsigned int	a;
 	unsigned int	b;
+	int	i;
 
-	a = strlcat(dest1, src, dest_size);
-	b = ft_strlcat(dest2, src, dest_size);
-	printf("#_ FUNTION strlcat:\n\t*_input -> dst[16] = 'Hola, como', src = 'esta el nene?', size = 17\n");
+	dest_size = 18;
+	dest_size2 = 28;
+	i = 0;
+	while (str1[i])
+	{
+		dest1[i] = str1[i];
+		dest2[i] = str1[i];
+		i++;
+	}
+	dest1[i] = '\0';
+	dest2[i] = '\0';
+	i = 0;
+	while (str2[i])
+	{
+		dest3[i] = str2[i];
+		dest4[i] = str2[i];
+		i++;
+	}	
+	dest3[i] = '\0';
+	dest4[i] = '\0';
+	a = strlcat(&dest1[0], &src[0], dest_size);
+	b = ft_strlcat(&dest2[0], &src[0], dest_size);
+	printf("#_ FUNTION strlcat:\n\t*_input -> dst[18] = 'Hola, como', src = ' estas?', size = 18\n");
 	if (strcmp(dest1, dest2) == 0)
 	{
 		printf("\tstrlcat return -> %i\n", a);
@@ -538,12 +574,14 @@ void	test_strlcat(void)
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn -> %i", b);
-		printf("\ndst = %s", dest2);
+		printf("\tstrlcat return -> %i\n", a);
+		printf("\tdst = %s\n", dest1);
+		printf("\tft_strlcat return -> %i\n", b);
+		printf("\tdst = %s\n", dest2);
 	}
 	a = strlcat(dest1, src2, dest_size);
 	b = ft_strlcat(dest2, src2, dest_size);
-	printf("\t*_input -> dst[16] = 'Hola, como', src = 'esta el nene?', size = 16 | size - dst length - 1 < 0\n");
+	printf("\t*_input -> dst[28] = 'Hola, como esta', src = ' el nene?', size = 28 | size - dst length - 1 < 0\n");
 	if (strcmp(dest1, dest2) == 0)
 	{
 		printf("\tstrlcat return -> %i\n", a);
@@ -555,7 +593,118 @@ void	test_strlcat(void)
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn -> %i", b);
-		printf("\ndst = %s", dest4);
+		printf("\treturn -> %i\n", a);
+		printf("\tdst = %s\n", dest3);
+		printf("\treturn -> %i\n", b);
+		printf("\tdst = %s\n", dest4);
+	}
+}
+
+void	test_toupper(void)
+{
+	char	c;
+		
+	printf("#_ FUNTION toupper:\n\t*_input -> c = A, B, C, ...Z\n");
+	c = 'A';
+	while (c <= 'Z')
+	{
+		if (ft_toupper(c) == c)
+			c++;
+		else
+			break;
+	}
+	if (c == 'Z' + 1)
+		printf("\t--PASS--\n");	
+	else
+	{
+		printf("\t**FAIL**\n");
+		printf("\treturn -> %i\n", ft_toupper(c));
+	}
+	printf("\t*_input -> c = a, b c, ...z\n");
+	c = 'a';
+	while (c <= 'z')
+	{
+		if (ft_toupper(c) == c - 32)
+			c++;
+		else
+			break;
+	}
+	if (c == 'z' + 1)
+		printf("\t--PASS--\n");	
+	else
+	{
+		printf("\t**FAIL**\n");
+		printf("\treturn -> %i\n",ft_toupper(c));
+	}
+}
+
+void	test_tolower(void)
+{
+	char	c;
+		
+	printf("#_ FUNTION toupper:\n\t*_input -> c = a, b, c, ...z\n");
+	c = 'a';
+	while (c <= 'z')
+	{
+		if (ft_tolower(c) == c)
+			c++;
+		else
+			break;
+	}
+	if (c == 'z' + 1)
+		printf("\t--PASS--\n");	
+	else
+	{
+		printf("\t**FAIL**\n");
+		printf("\treturn -> %i\n", ft_toupper(c));
+	}
+	printf("\t*_input -> c = A, B C, ...Z\n");
+	c = 'A';
+	while (c <= 'Z')
+	{
+		if (ft_tolower(c) == c + 32)
+			c++;
+		else
+			break;
+	}
+	if (c == 'Z' + 1)
+		printf("\t--PASS--\n");	
+	else
+	{
+		printf("\t**FAIL**\n");
+		printf("\tc = %i return -> %i\n", c, ft_tolower(c));
+	}
+}
+
+void	test_strchr(void)
+{
+	char	s[] = "Hola, como estas?";
+
+	printf("#_ FUNCTION strchr:\n\t*_input -> s = Hola, como estas?, c = m\n");
+	if (strcmp(ft_strchr(s, 'm'), strchr(s, 'm')) == 0)
+		printf("\t--PASS--\n");
+	else
+	{
+		printf("\t**FAIL**\n");
+		printf("\t strchr return -> %s\n", strchr(s, 'm'));
+		printf("\t ft_strchr return -> %s\n", ft_strchr(s, 'm'));
+	}
+	printf("\n\t*_input -> s = Hola, como estas?, c = \\0\n");
+	if (strcmp(ft_strchr(s, '\0'), strchr(s, '\0')) == 0)
+		printf("\t--PASS--\n");
+	else
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strchr return -> %s\n", strchr(s, '\0'));
+		printf("\t ft_strchr return -> %s\n", ft_strchr(s, '\0'));
+	}
+	printf("\n\t*_input -> s = Hola, como estas, c = y\n");
+	if (ft_strchr(s, 'y') == NULL)
+		printf("\t--PASS--\n");
+	else
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strchr return -> %s\n", strchr(s, 'y'));
+		printf("\t ft_strchr return -> %s\n", ft_strchr(s, 'y'));
 	}
 }

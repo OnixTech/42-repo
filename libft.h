@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:20:43 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/29 09:35:56 by luciano          ###   ########.fr       */
+/*   Updated: 2025/11/30 14:37:35 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char		*ft_strchr(const char *s, int c);
+int	ft_toupper(int c);
 
 #endif
