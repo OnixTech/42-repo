@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:42:39 by lupetill          #+#    #+#             */
-/*   Updated: 2025/11/30 21:11:22 by luciano          ###   ########.fr       */
+/*   Updated: 2025/11/30 21:47:13 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -29,6 +29,7 @@ void	test_strlcat(void);
 void	test_toupper(void);
 void	test_tolower(void);
 void	test_strchr(void);
+void	test_strrchr(void);
 
 int	main(void)
 {
@@ -47,6 +48,7 @@ int	main(void)
 	test_toupper();
 	test_tolower();
 	test_strchr();
+	test_strrchr();
 	return (0);
 }
 
@@ -706,5 +708,38 @@ void	test_strchr(void)
 		printf("\t**FAIL**\n");	
 		printf("\t strchr return -> %s\n", strchr(s, 'y'));
 		printf("\t ft_strchr return -> %s\n", ft_strchr(s, 'y'));
+	}
+}
+
+void	test_strrchr(void)
+{
+	char	s[] = "Hola, como estas?";
+
+	printf("#_ FUNCTION strchr:\n\t*_input -> s = Hola, como estas?, c = o\n");
+	if (strcmp(ft_strrchr(s, 'o'), strrchr(s, 'o')) == 0)
+		printf("\t--PASS--\n");
+	else
+	{
+		printf("\t**FAIL**\n");
+		printf("\t strrchr return -> %s\n", strrchr(s, 'o'));
+		printf("\t ft_strrchr return -> %s\n", ft_strrchr(s, 'o'));
+	}
+	printf("\n\t*_input -> s = Hola, como estas?, c = \\0\n");
+	if (strcmp(ft_strchr(s, '\0'), strchr(s, '\0')) == 0)
+		printf("\t--PASS--\n");
+	else
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strrchr return -> %s\n", strrchr(s, '\0'));
+		printf("\t ft_strchr return -> %s\n", ft_strrchr(s, '\0'));
+	}
+	printf("\n\t*_input -> s = Hola, como estas, c = y\n");
+	if (ft_strchr(s, 'y') == NULL)
+		printf("\t--PASS--\n");
+	else
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strrchr return -> %s\n", strrchr(s, 'y'));
+		printf("\t ft_strrchr return -> %s\n", ft_strrchr(s, 'y'));
 	}
 }
