@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-// #include <bsd/string.h>
+//#include <bsd/string.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -355,8 +355,7 @@ void	test_memcpy(void)
 	unsigned char	dst2[10];
 	int				i;
 
-	printf("#_ FUNTION memcpy:\n\t*_input -> dst[10], src = 0 1 2...9,
-		sizeof(dst)\n");
+	printf("#_ FUNTION memcpy:\n\t*_input -> dst[10], src = 0 1 2...9, sizeof(dst)\n");
 	i = 0;
 	while (i < 10)
 	{
@@ -404,8 +403,7 @@ void	test_memmove(void)
 	unsigned char	*d2;
 	int				i;
 
-	printf("#_ FUNTION memmove:\n\t*_input -> dst = KLMNOPQRST,
-		src = ABCDEFGHIJ, 10\n");
+	printf("#_ FUNTION memmove:\n\t*_input -> dst = KLMNOPQRST, src = ABCDEFGHIJ, 10\n");
 	i = 0;
 	while (i < 10)
 	{
@@ -502,13 +500,13 @@ void	test_memmove(void)
 
 void	test_strlcpy(void)
 {
-	char	dest_size;
-	char	dest1[8];
-	char	dest2[8];
-	char	src[] = {"DEFG"};
+	char			dest_size;
+	char			dest1[8];
+	char			dest2[8];
+	char			src[] = {"DEFG"};
 	size_t	a;
 	size_t	b;
-	int		i;
+	int	i;
 
 	dest_size = 8;
 	while (i < 3)
@@ -519,20 +517,19 @@ void	test_strlcpy(void)
 	}
 	a = strlcpy(&dest1[0], &src[0], dest_size);
 	b = ft_strlcpy(&dest2[0], &src[0], dest_size);
-	printf("#_ FUNTION strlcpy:\n\t*_input -> dst[8] = ABC, src = DEFG,
-		n = 4\n");
+	printf("#_ FUNTION strlcpy:\n\t*_input -> dst[8] = ABC, src = DEFG, n = 4\n");
 	if (strcmp(dest1, dest2) == 0)
 	{
-		printf("\tstrlcpy return (-> %zu\n", a));
+		printf("\tstrlcpy return -> %zu\n", a);
 		printf("\tdst = %s\n", dest1);
-		printf("\tft_strlcpy return (-> %zu\n", b));
+		printf("\tft_strlcpy return -> %zu\n", b);
 		printf("\tdst = %s\n", dest2);
 		printf("\t--PASS--\n");
 	}
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn (-> %zu", b));
+		printf("\treturn -> %zu", b);
 		printf("\ndst = %s", dest2);
 	}
 }
@@ -551,7 +548,7 @@ void	test_strlcat(void)
 	char			src2[] = {" el nene?"};
 	unsigned int	a;
 	unsigned int	b;
-	int				i;
+	int	i;
 
 	dest_size = 18;
 	dest_size2 = 28;
@@ -570,47 +567,45 @@ void	test_strlcat(void)
 		dest3[i] = str2[i];
 		dest4[i] = str2[i];
 		i++;
-	}
+	}	
 	dest3[i] = '\0';
 	dest4[i] = '\0';
 	a = strlcat(&dest1[0], &src[0], dest_size);
 	b = ft_strlcat(&dest2[0], &src[0], dest_size);
-	printf("#_ FUNTION strlcat:\n\t*_input -> dst[18] = 'Hola, como',
-		src = ' estas?', size = 18\n");
+	printf("#_ FUNTION strlcat:\n\t*_input -> dst[18] = 'Hola, como', src = ' estas?', size = 18\n");
 	if (strcmp(dest1, dest2) == 0)
 	{
-		printf("\tstrlcat return (-> %i\n", a));
+		printf("\tstrlcat return -> %i\n", a);
 		printf("\tdst = %s\n", dest1);
-		printf("\tft_strlcat return (-> %i\n", b));
+		printf("\tft_strlcat return -> %i\n", b);
 		printf("\tdst = %s\n", dest2);
 		printf("\t--PASS--\n");
 	}
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\tstrlcat return (-> %i\n", a));
+		printf("\tstrlcat return -> %i\n", a);
 		printf("\tdst = %s\n", dest1);
-		printf("\tft_strlcat return (-> %i\n", b));
+		printf("\tft_strlcat return -> %i\n", b);
 		printf("\tdst = %s\n", dest2);
 	}
 	a = strlcat(dest1, src2, dest_size);
 	b = ft_strlcat(dest2, src2, dest_size);
-	printf("\t*_input -> dst[28] = 'Hola, como esta', src = ' el nene?',
-		size = 28 | size - dst length - 1 < 0\n");
+	printf("\t*_input -> dst[28] = 'Hola, como esta', src = ' el nene?', size = 28 | size - dst length - 1 < 0\n");
 	if (strcmp(dest1, dest2) == 0)
 	{
-		printf("\tstrlcat return (-> %i\n", a));
+		printf("\tstrlcat return -> %i\n", a);
 		printf("\tdst = %s\n", dest3);
-		printf("\tft_strlcat return (-> %i\n", b));
+		printf("\tft_strlcat return -> %i\n", b);
 		printf("\tdst = %s\n", dest4);
 		printf("\t--PASS--\n");
 	}
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn (-> %i\n", a));
+		printf("\treturn -> %i\n", a);
 		printf("\tdst = %s\n", dest3);
-		printf("\treturn (-> %i\n", b));
+		printf("\treturn -> %i\n", b);
 		printf("\tdst = %s\n", dest4);
 	}
 }
@@ -618,7 +613,7 @@ void	test_strlcat(void)
 void	test_toupper(void)
 {
 	char	c;
-
+		
 	printf("#_ FUNTION toupper:\n\t*_input -> c = A, B, C, ...Z\n");
 	c = 'A';
 	while (c <= 'Z')
@@ -626,14 +621,14 @@ void	test_toupper(void)
 		if (ft_toupper(c) == c)
 			c++;
 		else
-			break ;
+			break;
 	}
 	if (c == 'Z' + 1)
-		printf("\t--PASS--\n");
+		printf("\t--PASS--\n");	
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn (-> %i\n", ft_toupper(c)));
+		printf("\treturn -> %i\n", ft_toupper(c));
 	}
 	printf("\t*_input -> c = a, b c, ...z\n");
 	c = 'a';
@@ -642,21 +637,21 @@ void	test_toupper(void)
 		if (ft_toupper(c) == c - 32)
 			c++;
 		else
-			break ;
+			break;
 	}
 	if (c == 'z' + 1)
-		printf("\t--PASS--\n");
+		printf("\t--PASS--\n");	
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn (-> %i\n", ft_toupper(c)));
+		printf("\treturn -> %i\n",ft_toupper(c));
 	}
 }
 
 void	test_tolower(void)
 {
 	char	c;
-
+		
 	printf("#_ FUNTION toupper:\n\t*_input -> c = a, b, c, ...z\n");
 	c = 'a';
 	while (c <= 'z')
@@ -664,14 +659,14 @@ void	test_tolower(void)
 		if (ft_tolower(c) == c)
 			c++;
 		else
-			break ;
+			break;
 	}
 	if (c == 'z' + 1)
-		printf("\t--PASS--\n");
+		printf("\t--PASS--\n");	
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\treturn (-> %i\n", ft_toupper(c)));
+		printf("\treturn -> %i\n", ft_toupper(c));
 	}
 	printf("\t*_input -> c = A, B C, ...Z\n");
 	c = 'A';
@@ -680,14 +675,14 @@ void	test_tolower(void)
 		if (ft_tolower(c) == c + 32)
 			c++;
 		else
-			break ;
+			break;
 	}
 	if (c == 'Z' + 1)
-		printf("\t--PASS--\n");
+		printf("\t--PASS--\n");	
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\tc = %i return (-> %i\n", c, ft_tolower(c)));
+		printf("\tc = %i return -> %i\n", c, ft_tolower(c));
 	}
 }
 
@@ -701,15 +696,15 @@ void	test_strchr(void)
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\t strchr return (-> %s\n", strchr(s, 'm')));
+		printf("\t strchr return -> %s\n", strchr(s, 'm'));
 		printf("\t ft_strchr return -> %s\n", ft_strchr(s, 'm'));
 	}
 	printf("\n\t*_input -> s = Hola, como estas?, c = \\0\n");
 	if (strcmp(ft_strchr(s, '\0'), strchr(s, '\0')) == 0)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
+	{	
+		printf("\t**FAIL**\n");	
 		printf("\t strchr return -> %s\n", strchr(s, '\0'));
 		printf("\t ft_strchr return -> %s\n", ft_strchr(s, '\0'));
 	}
@@ -717,8 +712,8 @@ void	test_strchr(void)
 	if (ft_strchr(s, 'y') == NULL)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
+	{	
+		printf("\t**FAIL**\n");	
 		printf("\t strchr return -> %s\n", strchr(s, 'y'));
 		printf("\t ft_strchr return -> %s\n", ft_strchr(s, 'y'));
 	}
@@ -741,8 +736,8 @@ void	test_strrchr(void)
 	if (strcmp(ft_strchr(s, '\0'), strchr(s, '\0')) == 0)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
+	{	
+		printf("\t**FAIL**\n");	
 		printf("\t strrchr return -> %s\n", strrchr(s, '\0'));
 		printf("\t ft_strrchr return -> %s\n", ft_strrchr(s, '\0'));
 	}
@@ -750,8 +745,8 @@ void	test_strrchr(void)
 	if (ft_strchr(s, 'y') == NULL)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
+	{	
+		printf("\t**FAIL**\n");	
 		printf("\t strrchr return -> %s\n", strrchr(s, 'y'));
 		printf("\t ft_strrchr return -> %s\n", ft_strrchr(s, 'y'));
 	}
@@ -759,65 +754,62 @@ void	test_strrchr(void)
 
 void	test_strncmp(void)
 {
-	printf("#_ FUNCTION strncmp:\n\t*_input -> s1 = "
-			", s2 = "
-			", n = 2\n");
+	printf("#_ FUNCTION strncmp:\n\t*_input -> s1 = "", s2 = "", n = 2\n");
 	if (ft_strncmp("", "", 2) == 0)
 		printf("\t--PASS--\n");
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\t strncmp return -> %d\n", strncmp("", "", 2));
-		printf("\t ft_strncmp return -> %d\n", ft_strncmp("", "", 2));
+		printf("\t strncmp return -> %d\n", strncmp("","", 2));
+		printf("\t ft_strncmp return -> %d\n", ft_strncmp("","", 2));
 	}
 	printf("\n\t*_input -> s1 = Hola s2 = Hala, n = 2\n");
-	if (ft_strncmp("Hola", "Hala", 2))
+	if (ft_strncmp("Hola","Hala", 2))
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
-		printf("\t strncmp return -> %d\n", strncmp("Hola", "Hala", 2));
-		printf("\t ft_strncmp return -> %d\n", ft_strncmp("Hola", "Hala", 2));
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strncmp return -> %d\n", strncmp("Hola","Hala", 2));
+		printf("\t ft_strncmp return -> %d\n", ft_strncmp("Hola","Hala", 2));
 	}
 	printf("\n\t*_input -> s1 = coMo, s2 = como, n = 4\n");
 	if (ft_strncmp("coMo", "como", 4) < 0)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
-		printf("\t strncmp return -> %d\n", strncmp("coMo", "como", 4));
-		printf("\t ft_strncmp return -> %d\n", ft_strncmp("coMo", "como", 4));
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strncmp return -> %d\n", strncmp("coMo","como", 4));
+		printf("\t ft_strncmp return -> %d\n", ft_strncmp("coMo","como", 4));
 	}
 }
 
 void	test_memchr(void)
-{
+{	
 	char	s[] = "Hola, como estas?";
 
-	printf("#_ FUNCTION memchr:\n\t*_input -> s = Hola, como estas?, c = m,
-		n = 10\n");
+	printf("#_ FUNCTION memchr:\n\t*_input -> s = Hola, como estas?, c = m, n = 10\n");
 	if (memcmp(ft_memchr(s, 'm', 10), memchr(s, 'm', 10), 9) == 0)
 	{
 		printf("\t--PASS--\n");
 		printf("\t memchr return -> %s\n", (char *)memchr(s, 'm', 10));
-		printf("\t ft_memchr return -> %s\n", (char *)ft_memchr(s, 'm', 10));
+		printf("\t ft_memchr return -> %s\n",(char *)ft_memchr(s, 'm', 10));
 	}
 	else
 	{
 		printf("\t**FAIL**\n");
 		printf("\t memchr return -> %s\n", (char *)memchr(s, 'm', 10));
-		printf("\t ft_memchr return -> %s\n", (char *)ft_memchr(s, 'm', 10));
+		printf("\t ft_memchr return -> %s\n",(char *)ft_memchr(s, 'm', 10));
 	}
 	printf("\n\t*_input -> s = Hola, como estas?, c = \\0, n = 0\n");
 	if (memcmp(ft_memchr(s, '\0', 0), memchr(s, '\0', 0), 0) == 0)
 	{
 		printf("\t--PASS--\n");
 		printf("\t memchr return -> %s\n", (char *)memchr(s, '\0', 0));
-		printf("\t ft_memchr return -> %s\n", (char *)ft_memchr(s, '\0', 0));
+		printf("\t ft_memchr return -> %s\n",(char *)ft_memchr(s, '\0', 0));
 	}
 	else
-	{
-		printf("\t**FAIL**\n");
+	{	
+		printf("\t**FAIL**\n");	
 		printf("\t memchr return -> %s\n", (char *)memchr(s, '\0', 0));
 		printf("\t ft_memchr return -> %s\n", (char *)ft_memchr(s, '\0', 0));
 	}
@@ -825,8 +817,8 @@ void	test_memchr(void)
 	if ((void *)ft_memchr(s, 'y', 4) == NULL)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
+	{	
+		printf("\t**FAIL**\n");	
 		printf("\t memchr return -> %s\n", (char *)memchr(s, 'y', 4));
 		printf("\t ft_memchr return -> %s\n", (char *)ft_memchr(s, 'y', 4));
 	}
@@ -834,92 +826,81 @@ void	test_memchr(void)
 
 void	test_memcmp(void)
 {
-	printf("#_ FUNCTION memcmp:\n\t*_input -> s1 = "
-			", s2 = "
-			", n = 2\n");
+	printf("#_ FUNCTION memcmp:\n\t*_input -> s1 = "", s2 = "", n = 2\n");
 	if (ft_memcmp("", "", 2) == 0)
 		printf("\t--PASS--\n");
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\t memcmp return -> %d\n", memcmp("", "", 2));
-		printf("\t ft_memcmp return -> %d\n", ft_memcmp("", "", 2));
+		printf("\t memcmp return -> %d\n", memcmp("","", 2));
+		printf("\t ft_memcmp return -> %d\n", ft_memcmp("","", 2));
 	}
 	printf("\n\t*_input -> s1 = Hola s2 = Hala, n = 2\n");
-	if (ft_memcmp("Hola", "Hala", 2))
+	if (ft_memcmp("Hola","Hala", 2))
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
-		printf("\t memcmp return -> %d\n", memcmp("Hola", "Hala", 2));
-		printf("\t ft_memcmp return -> %d\n", ft_memcmp("Hola", "Hala", 2));
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t memcmp return -> %d\n", memcmp("Hola","Hala", 2));
+		printf("\t ft_memcmp return -> %d\n", ft_memcmp("Hola","Hala", 2));
 	}
 	printf("\n\t*_input -> s1 = coMo, s2 = como, n = 4\n");
 	if (ft_memcmp("coMo", "como", 4) < 0)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
-		printf("\t memcmp return -> %d\n", memcmp("coMo", "como", 4));
-		printf("\t ft_memcmp return -> %d\n", ft_memcmp("coMo", "como", 4));
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t memcmp return -> %d\n", memcmp("coMo","como", 4));
+		printf("\t ft_memcmp return -> %d\n", ft_memcmp("coMo","como", 4));
 	}
 	printf("\n\t*_input -> s1 = co\\200o, s2 = como, n = 4\n");
 	if (ft_memcmp("co\200o", "como", 4) > 0)
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
+	{	
+		printf("\t**FAIL**\n");	
 		printf("\t memcmp return -> %d\n", memcmp("co\200o", "como", 4));
 		printf("\t ft_memcmp return -> %d\n", ft_memcmp("co\200o", "como", 4));
 	}
 }
 
 void	test_strnstr(void)
-{
-	printf("#_ FUNCTION strnstr:\n\t*_input -> s1 = "
-			", s2 = "
-			", n = 2\n");
+{	
+	printf("#_ FUNCTION strnstr:\n\t*_input -> s1 = "", s2 = "", n = 2\n");
 	if (ft_strnstr("", "", 2) == strnstr("", "", 2))
 		printf("\t--PASS--\n");
 	else
 	{
 		printf("\t**FAIL**\n");
-		printf("\t strnstr return -> %s\n", strnstr("", "", 2));
-		printf("\t ft_strnstr return -> %s\n", ft_strnstr("", "", 2));
+		printf("\t strnstr return -> %s\n", strnstr("","", 2));
+		printf("\t ft_strnstr return -> %s\n", ft_strnstr("","", 2));
 	}
 	printf("\n\t*_input -> s1 = Hola, como estas? s2 = como = 18\n");
-	if (ft_strnstr("Hola, como estas?", "como", 18))
+	if (ft_strnstr("Hola, como estas?","como", 18))
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
-		printf("\t strnstr return -> %s\n", strnstr("Hola, como estas?", "como",
-				18));
-		printf("\t ft_strnstr return -> %s\n", ft_strnstr("Hola, como estas?",
-				"como", 18));
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strnstr return -> %s\n", strnstr("Hola, como estas?","como", 18));
+		printf("\t ft_strnstr return -> %s\n", ft_strnstr("Hola, como estas?","como", 18));
 	}
 	printf("\n\t*_input -> Hola, como estas?, Hola, como estas?, 8\n");
-	if (ft_strnstr("Hola, como estas?", "Hola, como estas?",
-			8) == strnstr("Hola, como estas?", "Hola, como estas?", 8))
+	if (ft_strnstr("Hola, como estas?", "Hola, como estas?", 8) == strnstr("Hola, como estas?", "Hola, como estas?", 8))
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
-		printf("\t strnstr return -> %s\n", strnstr("Hola, como estas?", "Hola,
-				como estas?", 8));
-		printf("\t ft_strnstr return -> %s\n", ft_strnstr("Hola, como estas?",
-				"Hola, como estas?", 8));
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strnstr return -> %s\n", strnstr("Hola, como estas?", "Hola, como estas?", 8));
+		printf("\t ft_strnstr return -> %s\n", ft_strnstr("Hola, como estas?", "Hola, como estas?", 8));
 	}
 	printf("\n\t*_input -> Hola, como estas?, casa, 18)\n");
-	if (ft_strnstr("Hola, como estas?", "casa", 18) == strnstr("Hola,
-			como estas?", "casa", 18))
+	if (ft_strnstr("Hola, como estas?", "casa", 18) == strnstr("Hola, como estas?", "casa", 18))
 		printf("\t--PASS--\n");
 	else
-	{
-		printf("\t**FAIL**\n");
-		printf("\t strnstr return -> %s\n", strnstr("Hola, como estas?", "casa",
-				18));
-		printf("\t ft_strnstr return -> %s\n", ft_strnstr("Hola, como estas?",
-				"casa", 18));
+	{	
+		printf("\t**FAIL**\n");	
+		printf("\t strnstr return -> %s\n", strnstr("Hola, como estas?", "casa", 18));
+		printf("\t ft_strnstr return -> %s\n", ft_strnstr("Hola, como estas?", "casa", 18));
 	}
 }
+
