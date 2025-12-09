@@ -6,52 +6,53 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:17:24 by luciano           #+#    #+#             */
-/*   Updated: 2025/12/09 16:27:00 by luciano          ###   ########.fr       */
+/*   Updated: 2025/12/09 19:08:51 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!lst || !new)
-		return;
+	if (!new)
+		return ;
 	new->next = *lst;
 	*lst = new;
 }
 /*
 #include <stdio.h>
-int main(void)
+
+int	main(void)
 {
-    char    *a = " como";
-    char    *b = " estas";
-    char    *c = " loco";
-    char    *d = "?";
-    char    *x = "Hola,";
+	char    *a = " como";
+	char    *b = " estas";
+	char    *c = " loco";
+	char    *d = "?";
+	char    *x = "Hola,";
 
-    t_list  *n1;
-    t_list  *n2;
-    t_list  *n3;
-    t_list  *n4;
-    t_list  *head;
+	t_list  *n1;
+	t_list  *n2;
+	t_list  *n3;
+	t_list  *n4;
+	t_list  *head;
 
-    n1 = ft_lstnew(a);
-    n2 = ft_lstnew(b);
-    n3 = ft_lstnew(c);
-    n4 = ft_lstnew(d);
+	n1 = ft_lstnew(a);
+	n2 = ft_lstnew(b);
+	n3 = ft_lstnew(c);
+	n4 = ft_lstnew(d);
 
-    n1->next = n2;
-    n2->next = n3;
-    n3->next = n4;
-    head = n1;
+	n1->next = n2;
+	n2->next = n3;
+	n3->next = n4;
+	head = n1;
 
-    t_list *nx = ft_lstnew(x);
-    ft_lstadd_front(&head, nx);
-    t_list *tmp = head;
-    while (tmp)
-    {
-        printf("%s", (char *)tmp->content);
-        tmp = tmp->next;
-    }
-    printf("\n");
-    return 0;
+	t_list *nx = ft_lstnew(x);
+	ft_lstadd_front(&head, nx);
+	t_list *tmp = head;
+	while (tmp)
+	{
+		printf("%s", (char *)tmp->content);
+		tmp = tmp->next;
+	}
+	printf("\n");
+	return (0);
 }*/
