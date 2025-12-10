@@ -34,11 +34,11 @@ The main task of this project is to write your own library of functions in C lan
  
 ## Instructions
 Each function should contain his own file named with the prefix "ft_". A Makefile should implement to compile the library into the libft.a library with the flags -Wall -Wextra -Werror.
-Commands:
-make         *builds the libft.a*
-make clean   *removes .o files only*
-make fclean  *removes .o plus libft.a*
-make re      *removes everything and rebuilds libft.a*
+### Commands
+`make`        - *builds the libft.a*
+`make clean`  - *removes .o files only*
+`make fclean` - *removes .o plus libft.a*
+`make re`     - *removes everything and rebuilds libft.a*
 
 ## Resources
 - 42 subject PDF
