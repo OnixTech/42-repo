@@ -6,21 +6,40 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 17:04:19 by lupetill          #+#    #+#             */
-/*   Updated: 2025/12/29 14:39:07 by lupetill         ###   ########.fr       */
+/*   Updated: 2025/12/29 16:09:39 by lupetill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-static	int	isargument(const char c)
+static	int	type_argument(const char c)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd'
-		|| c == 'i' || c == 'u' || c == 'x'
-				|| c == 'X' || c == '%')
+	if (c == 'c' || c == 's' || c == 'p'|| c == 'd'
+		||c == 'i' || c == 'u' || c == 'x' 
+			|| c == 'X' || c == '%')
 		return (1);
 	return (0);
 }
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+static	void	print(const char c, void *arg)
+{
+	if (c == 'c')
+		write(1, (char *)arg, 1);
+	if (c == 's')
+		write(1, (char *)arg, ft_strlen((char *)arg));
+}
+
 int	ft_printf(const char *str, ...)
 {
 	va_list args;
@@ -32,9 +51,8 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			if(isargument(str[i + 1]))
-				printf("%s", va_arg(args, char*));
-		//		write(1, &str[i], 1);
+			if(type_argument(str[i + 1]))
+				print(str[i + 1], va_arg(args, char*));		
 			i++;
 		}
 		else
@@ -50,6 +68,6 @@ int	ft_printf(const char *str, ...)
 int	main(int arg, char **argc)
 {
 	(void)arg;
-	ft_printf("Hola %s%s", argc[1], argc[2]);
+	ft_printf("Hola %c%s", argc[1], argc[2]);
 	return (0);
 }
