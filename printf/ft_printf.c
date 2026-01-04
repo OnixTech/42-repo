@@ -6,12 +6,10 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 17:04:19 by lupetill          #+#    #+#             */
-/*   Updated: 2025/12/29 16:09:39 by lupetill         ###   ########.fr       */
+/*   Updated: 2026/01/04 20:50:47 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
-#include <stdio.h>
 
 static	int	type_argument(const char c)
 {
@@ -22,22 +20,17 @@ static	int	type_argument(const char c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *s)
+static	void	print(const char c, va_list *args)
 {
-	size_t	i;
+	char	*s;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-static	void	print(const char c, void *arg)
-{
 	if (c == 'c')
-		write(1, (char *)arg, 1);
+		ft_putchar_fd((char)va_arg(*args, int), 1);
 	if (c == 's')
-		write(1, (char *)arg, ft_strlen((char *)arg));
+	{
+		s = va_arg(*args, char *);	
+		write(1, s, ft_strlen(s));
+	}
 }
 
 int	ft_printf(const char *str, ...)
@@ -52,7 +45,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			if(type_argument(str[i + 1]))
-				print(str[i + 1], va_arg(args, char*));		
+				print(str[i + 1], &args);
 			i++;
 		}
 		else
@@ -65,9 +58,11 @@ int	ft_printf(const char *str, ...)
 	return (0);
 }
 
+#include <stdio.h>
 int	main(int arg, char **argc)
 {
 	(void)arg;
-	ft_printf("Hola %c%s", argc[1], argc[2]);
+	ft_printf("My function -> Hola %s %c\n", argc[1], 'c');
+	printf("Original -> Hola %s %c\n", argc[1], 'c');
 	return (0);
 }
