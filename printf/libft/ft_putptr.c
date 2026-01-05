@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printhexa.c                                     :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 21:10:20 by luciano           #+#    #+#             */
-/*   Updated: 2026/01/04 23:45:32 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/05 20:34:49 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../ft_printf.h"
-#include <stdio.h>
 
 static	int	length(size_t nbr)
 {
@@ -25,42 +24,44 @@ static	int	length(size_t nbr)
 	return (count);
 }
 
-void	ft_printhexa(void *ptr)
+int	ft_putptr(void *ptr)
 {
 	size_t	nbr;
 	char	*buff;
 	int	size;
 
 	nbr = (size_t)ptr;
-	size = length(nbr);
-	buff = (char *)malloc(sizeof(char) * (size + 1));
+	size = length(nbr) + 2;
+	buff = (char *)malloc(sizeof(char) * (size));
 	if (!buff)
-		return ;
+		return (0);
+	ft_memset(buff, '0', size - 1);
 	buff[size--] = '\0';
-	while(nbr)
+	while(size > 1)
 	{
-		
 		if (nbr % 16 > 9)
 			buff[size] = (nbr % 16) - 10 + 'a';
 		else
-		{
 			buff[size] = (nbr % 16) + 48;
-		}
-		//printf("%zx\n", nbr);
-		size--;
 		nbr /= 16;
+		size--;
 	}
-	write(1, buff, ft_strlen(buff));
+	buff[size] = 'x';
+	size = ft_putstr(buff, 1);
 	free(buff);
+	return (size);
 }
-
+/*
+#include <stdio.h>
 int	main(void)
 {
 	int	*p;
 	int	a;
 
 	p = &a;
-	printf("%p\n", p);
-	ft_printhexa(p);
+	printf(" - %d - ", printf("%p", p));
+	printf("\n");
+	printf(" - %d - ", ft_putptr(p));
 	return (0);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:54:10 by lupetill          #+#    #+#             */
-/*   Updated: 2026/01/04 22:40:57 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/05 20:23:08 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 int	ft_printf(const char *, ...);
 size_t	ft_strlen(const char *s);
-void	ft_putchar_fd(char c, int fd);
-void	ft_printhexa(void *ptr);
-
+int	ft_putchar(char c, int fd);
+int	ft_putptr(void *ptr);
+int	ft_putstr(char *s);
+void	*ft_memset(void	*b, int c, size_t len);
 #endif
