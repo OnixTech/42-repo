@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 17:04:19 by lupetill          #+#    #+#             */
-/*   Updated: 2026/01/07 13:19:10 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/07 17:13:06 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -39,6 +39,8 @@ static	int	print(const char c, va_list *args)
 		length = ft_putnbr_fd(va_arg(*args, int), 1);
 	if (c == 'u')
 		length = ft_putu(va_arg(*args, unsigned int));
+	if (c == 'x')
+		length = ft_puthexa(va_arg(*args, unsigned int), c);
 	return (length);
 }
 
@@ -77,8 +79,8 @@ int	main(int arg, char **argc)
 	b = -2;
 	p = &a;
 	(void)arg;
-	printf(" - %d -\n", ft_printf("Hola, %s %c %p %p %d %i %u hehehe", argc[1], 'c', p, &a, -102, -12, -2));
-	printf(" - %d -\n",    printf("Hola, %s %c %p %p %d %i %u hehehe", argc[1], 'c', p, &a, -102, -12, -2));
+	printf(" - %d -\n", ft_printf("Hola, %s %c %p %p %d %i %u %x hehehe", argc[1], 'c', p, &a, -102, -12, -2, 9));
+	printf(" - %d -\n",    printf("Hola, %s %c %p %p %d %i %u %x hehehe", argc[1], 'c', p, &a, -102, -12, -2, 9));
 
 	return (0);
 }
