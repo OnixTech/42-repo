@@ -6,7 +6,7 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:54:10 by lupetill          #+#    #+#             */
-/*   Updated: 2026/01/05 20:23:08 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/07 13:16:02 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 
 int	ft_printf(const char *, ...);
 size_t	ft_strlen(const char *s);
-int	ft_putchar(char c, int fd);
+int	ft_putchar_fd(char c, int fd);
 int	ft_putptr(void *ptr);
-int	ft_putstr(char *s);
+int	ft_putstr_fd(char *s, int fd);
+int	ft_putnbr_fd(int n, int fd);
+int	ft_putu(unsigned int n);
 void	*ft_memset(void	*b, int c, size_t len);
+
 #endif

@@ -6,7 +6,7 @@
 #    By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/04 14:38:22 by luciano           #+#    #+#              #
-#    Updated: 2026/01/05 20:20:28 by luciano          ###   ########.fr        #
+#    Updated: 2026/01/07 13:15:17 by luciano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c libft/ft_strlen.c libft/ft_putchar.c libft/ft_putstr.c libft/ft_memset.c libft/ft_putptr.c
+SRC = ft_printf.c libft/ft_strlen.c libft/ft_putchar_fd.c libft/ft_putstr_fd.c libft/ft_memset.c libft/ft_putptr.c libft/ft_putnbr_fd.c libft/ft_putu.c
 
 OBJ = $(SRC:.c=.o)
 

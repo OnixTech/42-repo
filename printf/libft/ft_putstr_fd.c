@@ -6,16 +6,16 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 12:09:17 by luciano           #+#    #+#             */
-/*   Updated: 2026/01/05 20:35:37 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/06 15:09:53 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../ft_printf.h"
 
-int	ft_putstr(char *s)
+int	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
 	i = ft_strlen(s);
-	write(1, s, i);
+	write(fd, s, i);
 	return (i);
 }

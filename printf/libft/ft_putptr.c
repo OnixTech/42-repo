@@ -6,7 +6,7 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 21:10:20 by luciano           #+#    #+#             */
-/*   Updated: 2026/01/05 20:34:49 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/06 15:13:58 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../ft_printf.h"
@@ -47,7 +47,7 @@ int	ft_putptr(void *ptr)
 		size--;
 	}
 	buff[size] = 'x';
-	size = ft_putstr(buff, 1);
+	size = ft_putstr_fd(buff, 1);
 	free(buff);
 	return (size);
 }
