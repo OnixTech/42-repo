@@ -14,7 +14,7 @@
 int	ft_putnbr_fd(int n, int fd)
 {
 	long	nbr;
-	int	length;
+	int		length;
 
 	length = 1;
 	nbr = n;

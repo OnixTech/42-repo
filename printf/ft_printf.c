@@ -6,24 +6,23 @@
 /*   By: lupetill <lupetill@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 17:04:19 by lupetill          #+#    #+#             */
-/*   Updated: 2026/01/10 12:33:15 by lupetill         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:17:24 by lupetill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static	int	type_argument(const char c)
+static int	type_argument(const char c)
 {
-	if (c == 'c' || c == 's' || c == 'p'|| c == 'd'
-		||c == 'i' || c == 'u' || c == 'x' 
-			|| c == 'X' || c == '%')
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
 }
 
-static	int	print(const char c, va_list *args)
+static int	print(const char c, va_list *args)
 {
 	char	*s;
-	int	length;
+	int		length;
 
 	length = 0;
 	if (c == 'c')
@@ -41,23 +40,25 @@ static	int	print(const char c, va_list *args)
 		length = ft_putu(va_arg(*args, unsigned int));
 	if (c == 'x' || c == 'X')
 		length = ft_puthexa(va_arg(*args, unsigned int), c);
+	if (c == '%')
+		length = ft_putchar_fd('%', 1);
 	return (length);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	va_list args;
-	int	i;
-	int	length;
+	va_list	args;
+	int		i;
+	int		length;
 
 	length = 0;
 	i = 0;
 	va_start(args, str);
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			if(type_argument(str[i + 1]))
+			if (type_argument(str[i + 1]))
 				length += print(str[i + 1], &args);
 			i++;
 		}
@@ -67,20 +68,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (length);
-}
-
-#include <stdio.h>
-int	main(int arg, char **argc)
-{
-	unsigned int	*p;
-	unsigned int	a;
-	int		b;
-
-	b = -2;
-	p = &a;
-	(void)arg;
-	printf(" - %d -\n", ft_printf("Hola, %s %c %p %p %d %i %u %x %X hehehe", argc[1], 'c', p, &a, -102, -12, -2, 254, 254));
-	printf(" - %d -\n",    printf("Hola, %s %c %p %p %d %i %u %x %X hehehe", argc[1], 'c', p, &a, -102, -12, -2, 254, 254));
-
-	return (0);
 }

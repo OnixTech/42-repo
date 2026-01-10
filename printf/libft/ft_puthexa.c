@@ -6,11 +6,12 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 14:05:42 by luciano           #+#    #+#             */
-/*   Updated: 2026/01/10 12:35:04 by lupetill         ###   ########.fr       */
+/*   Updated: 2026/01/10 19:17:18 by lupetill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../ft_printf.h"
-int	buff_size(unsigned int n)
+
+int	buff_size(size_t n)
 {
 	int	count;
 
@@ -20,24 +21,21 @@ int	buff_size(unsigned int n)
 		count++;
 		n /= 16;
 	}
-	return (count); 
+	return (count);
 }
 
-int	ft_puthexa(unsigned int n, char format)
+int	ft_puthexa(size_t n, char format)
 {
-	int	size;
+	int		size;
 	char	*buff;
 
+	if (!n)
+		return (ft_putstr_fd("0", 1));
 	size = buff_size(n);
-	buff = (char *)malloc(sizeof(char) * size);
+	buff = (char *)malloc(sizeof(char) * (size + 1));
 	if (!buff)
 		return (0);
 	buff[size--] = '\0';
-	if (n == 0)
-	{
-		free(buff);
-		return (ft_putstr_fd("0", 1));
-	}
 	while (size >= 0)
 	{
 		if (n % 16 > 9)
@@ -49,5 +47,5 @@ int	ft_puthexa(unsigned int n, char format)
 	}
 	size = ft_putstr_fd(buff, 1);
 	free(buff);
-	return (size);	
+	return (size);
 }
