@@ -6,7 +6,7 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 14:05:42 by luciano           #+#    #+#             */
-/*   Updated: 2026/01/07 17:13:52 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:35:04 by lupetill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../ft_printf.h"
@@ -28,7 +28,6 @@ int	ft_puthexa(unsigned int n, char format)
 	int	size;
 	char	*buff;
 
-	format += 1; 
 	size = buff_size(n);
 	buff = (char *)malloc(sizeof(char) * size);
 	if (!buff)
@@ -42,7 +41,7 @@ int	ft_puthexa(unsigned int n, char format)
 	while (size >= 0)
 	{
 		if (n % 16 > 9)
-			buff[size] = (n % 16) - 10 + 'a';
+			buff[size] = (n % 16) - 10 + format - 23;
 		else
 			buff[size] = (n % 16) + 48;
 		n /= 16;
