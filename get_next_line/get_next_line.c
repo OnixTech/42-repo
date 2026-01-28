@@ -6,7 +6,7 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 09:13:48 by luciano           #+#    #+#             */
-/*   Updated: 2026/01/27 10:05:14 by luciano          ###   ########.fr       */
+/*   Updated: 2026/01/28 21:10:07 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,12 @@ char	*get_next_line(int fd)
 {
 	
 
+}
+
+#include <stdio.h>
+#include <fcntl.h>
+int main (void)
+{
+
+	return (0);
 }
