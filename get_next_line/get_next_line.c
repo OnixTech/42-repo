@@ -6,7 +6,7 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 09:13:48 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/04 20:33:54 by lupetill         ###   ########.fr       */
+/*   Updated: 2026/02/05 11:34:01 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 
 char *gnl_strjoin(char *s1, char *s2, size_t s1l, size_t s2l);
 void gnl_strncpy(char *buf, char *str, size_t n);
+char	*stash_cleaner(char *str, size_t i,  size_t stashlen);
 
 char	*get_next_line(int fd)
 {
 	static char	*stash;
-	char	*readbuf;
-	char	*returnbuf;
+	char	*buffer;
+	char	*line;
 	char	flag;
 	size_t	n;
 	static size_t	stashlen;
@@ -29,35 +30,43 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	readbuf = (char *)malloc(sizeof(char) * BUFFER_SIZE);
-	if (!readbuf)
+	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE);
+	if (!buffer)
 		return (NULL);
 	n = 1;
 	flag = 0;
 	while (n && !flag)
 	{
 		i = 0;
-		if ((n = read(fd, readbuf, BUFFER_SIZE)) <= 0)
+		if ((n = read(fd, buffer, BUFFER_SIZE)) <= 0)
 			return (NULL);
-		stash = gnl_strjoin(stash, readbuf, stashlen, n);
+		stash = gnl_strjoin(stash, buffer, stashlen, n);
 		stashlen += n;
 		while (stash[i] != '\n' && i < stashlen)
 			i++;
 		if (stash[i] == '\n' && i != stashlen)
 			flag = 1;
 	}
-	printf("\n");
-	returnbuf = (char *)malloc(sizeof(char) * (i + 1));
-	if (!returnbuf)
+	line = (char *)malloc(sizeof(char) * (i + 1));
+	if (!line)
 		return (NULL);
-	printf("%zu, %zu\n", i, stashlen);
-	gnl_strncpy(returnbuf, stash, i);
-	returnbuf[i + 1] = '\n';
-	printf("returnbuf -> %s\n", returnbuf);
-	stashlen = 0;
-	stash += i + 2;
-	printf("stash rest -> %s\n", stash);
-	return (returnbuf);
+	gnl_strncpy(line, stash, i);
+	line[i + 1] = '\n';
+	stashlen -= (i + 1);
+	stash = stash_cleaner(stash, i, stashlen);
+	return (line);
+}
+
+char	*stash_cleaner(char *str, size_t i,  size_t stashlen)
+{
+	char	*stash;
+
+	stash = (char *)malloc(sizeof(char) * (stashlen + 1));
+	if (!stash)
+		return (NULL);
+	gnl_strncpy(stash, str + i + 1, stashlen);
+	free(str);
+	return (stash);
 }
 
 char *gnl_strjoin(char *s1, char *s2, size_t s1l, size_t s2l)
@@ -95,12 +104,12 @@ int main (void)
 	int i;
 	char *line;
 
-	i = 6;
+	i = 26;
 	fd = open("text.txt", O_RDONLY);
 	while(i)
 	{
 		line = get_next_line(fd);
-		printf("get_next_line -> %s\n", line);		
+		printf("%s\n", line);		
 		free(line);
 		i--;
 	}
