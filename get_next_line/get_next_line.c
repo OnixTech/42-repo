@@ -6,12 +6,12 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 09:13:48 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/07 15:30:26 by luciano          ###   ########.fr       */
+/*   Updated: 2026/02/08 21:13:54 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-// »»-----► Number of lines: 24
+// »»-----► Number of lines: 54
 char	*get_next_line(int fd)
 {
 	static char	*stash;
@@ -19,25 +19,24 @@ char	*get_next_line(int fd)
 	static size_t	stashlen;
 	size_t	i;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
-    if (read(fd, 0, 0) < 0)
-    {
-        free(stash);
-        stash = NULL;
-        stashlen = 0;
-        return (NULL);
-    }
-    if (!read_file(fd, &stash, &stashlen, BUFFER_SIZE))
-    {
-        free(stash);
-        stash = NULL;
-        stashlen = 0;
-        return (NULL);
-    }
-    if (!stash || stashlen == 0)
-        return (NULL);
-
+  if (fd < 0 || BUFFER_SIZE <= 0)
+      return (NULL);
+  if (read(fd, 0, 0) < 0)
+  {
+      free(stash);
+      stash = NULL;
+      stashlen = 0;
+      return (NULL);
+  }
+  if (!read_file(fd, &stash, &stashlen, BUFFER_SIZE))
+  {
+      free(stash);
+      stash = NULL;
+      stashlen = 0;
+      return (NULL);
+  }
+  if (!stash || stashlen == 0)
+      return (NULL);
   i = 0;
 	while (i < stashlen && stash[i] != '\n')
 		i++;
