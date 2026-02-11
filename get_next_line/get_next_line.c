@@ -6,31 +6,42 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 09:13:48 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/10 11:40:49 by luciano          ###   ########.fr       */
+/*   Updated: 2026/02/11 21:19:57 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+static int	stash_null(int fd, char **stash, size_t *stashlen)
+{
+	if (read(fd, 0, 0) < 0)
+	{
+		free(*stash);
+		*stash = NULL;
+		*stashlen = 0;
+		return (0);
+	}
+	return (1);
+}
+
 char	*get_next_line(int fd)
 {
-	static char	*stash;
-	char	*line;
+	static char		*stash;
+	char			*line;
 	static size_t	stashlen;
-	size_t	i;
+	size_t			i;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (read(fd, 0, 0) < 0)
-	{
-		stash_null(&stash, &stashlen);
+	if (!stash_null(fd, &stash, &stashlen))
 		return (NULL);
-	}
-	if (!read_file(fd, &stash, &stashlen, BUFFER_SIZE))
-		return (NULL);
+	read_file(fd, &stash, &stashlen, BUFFER_SIZE);
 	if (!stash || stashlen == 0)
 		return (NULL);
-	i = has_nl(stash, stashlen, 0);
+	i = 0;
+	while (i < stashlen)
+		if (stash[i++] == '\n')
+			break ;
 	line = malloc(i + 1);
 	if (!line)
 		return (NULL);
