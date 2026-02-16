@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 09:13:48 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/11 21:19:57 by luciano          ###   ########.fr       */
+/*   Updated: 2026/02/16 11:52:05 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!stash_null(fd, &stash, &stashlen))
 		return (NULL);
-	read_file(fd, &stash, &stashlen, BUFFER_SIZE);
+	read_file(fd, &stash, &stashlen);
 	if (!stash || stashlen == 0)
 		return (NULL);
 	i = 0;
@@ -51,22 +51,22 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (line);
 }
+/*
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <stdio.h>
 
-// #include <fcntl.h>
-// #include <sys/stat.h>
-// #include <stdio.h>
+int main (int arg, char **argc)
+{
+	int fd;
+	char *line;
 
-// int main (int arg, char **argc)
-// {
-// 	int fd;
-// 	char *line;
-
-// 	fd = open(argc[1], O_RDONLY);
-//   (void)arg;
-// 	if (fd < 0)
-// 		return (1);
-// 	while((line = get_next_line(fd)) != NULL)
-// 		free(line);
-// 	close(fd);
-// 	return (0);
-// }
+	fd = open(argc[1], O_RDONLY);
+  (void)arg;
+	if (fd < 0)
+		return (1);
+	while((line = get_next_line(fd)) != NULL)
+		free(line);
+	close(fd);
+	return (0);
+}*/
