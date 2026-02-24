@@ -6,7 +6,14 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/19 22:39:11 by luciano          ###   ########.fr       */
+/*   Updated: 2026/02/24 21:56:40 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+char	error_handle(char **argc)
+{
+	(void)argc;
+	return (1);
+}

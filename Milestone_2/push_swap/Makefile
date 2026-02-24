@@ -9,7 +9,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
