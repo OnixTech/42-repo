@@ -6,14 +6,13 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/24 21:56:40 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:24:50 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	error_handle(char **argc)
+void	push_swap(int *input)
 {
-	(void)argc;
-	return (1);
+	printf("%d\n", *input);
 }

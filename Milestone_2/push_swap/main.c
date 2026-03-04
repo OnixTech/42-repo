@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:07 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/24 21:58:39 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:35:21 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 int	main(int arg, char **argc)
 {
-	//int	*input;
+	int	*input;
 
-	if (error_handle(argc))
-	{
+	input = parse_input(arg, argc);
+	if (!input)
 		write(1, "Error\n", 6);
-		return (0);
-	}
-	/*if (arg > 2)
-		input = input_handle(&argc);
-	else if (arg == 2)
-		input_handle(argc)*/
-	(void)arg;
-	printf("Hello push_swap");
+	else
+		push_swap(input);
+	free(input);
 	return (0);
 }

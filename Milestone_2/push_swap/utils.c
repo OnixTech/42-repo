@@ -6,7 +6,16 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:44:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/19 22:44:11 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/02 13:04:28 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+int	ft_isdigit(char *c)
+{
+	if (*c >= '0')
+		if (*c <= '9')
+			return (1);
+	return (0);
+}

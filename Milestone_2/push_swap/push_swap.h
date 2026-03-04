@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:13 by luciano           #+#    #+#             */
-/*   Updated: 2026/02/24 21:55:57 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:29:23 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include	<stdlib.h>
 
-char error_handle(char **argc);
+int	ft_isdigit(char *c);
+int	*parse_input(int arg, char **argc);
+int	*parse_string(char *argc);
+int	*parse_args(int arg, char *argc);
+void	push_swap(int	*input);
 
 #endif /* PUSH_SWAP_H */
