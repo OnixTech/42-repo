@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:07 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/04 13:35:21 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/07 11:02:44 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 int	main(int arg, char **argc)
 {
 	int	*input;
+	int size;
 
-	input = parse_input(arg, argc);
-	if (!input)
+	size = 0;
+	input = NULL;
+	if (!parse_input(arg, argc, &size, &input))
+	{
 		write(1, "Error\n", 6);
-	else
-		push_swap(input);
+		return (0);
+	}
+	push_swap(input, size);
 	free(input);
 	return (0);
 }

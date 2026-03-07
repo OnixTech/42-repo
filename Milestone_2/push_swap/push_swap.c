@@ -6,13 +6,17 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/04 13:24:50 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/07 11:02:28 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(int *input)
+void	push_swap(int *input, int size)
 {
-	printf("%d\n", *input);
+	int i;
+
+	i = 0;
+	while(i < size)
+		printf("%d\n", input[i++]);
 }
