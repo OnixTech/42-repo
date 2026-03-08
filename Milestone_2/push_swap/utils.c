@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:44:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/08 08:10:25 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/08 08:57:57 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_digit_sign(char *c)
 			return (1);
 	return (0);
 }
+
 long	ft_atoi(char *str)
 {
 	long	number;

@@ -2,7 +2,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.c push_swap.c utils.c input_handler.c
+SRC = main.c push_swap.c utils.c string_utils.c args_utils.c input_handler.c
 
 OBJ = $(SRC:.c=.o)
 
