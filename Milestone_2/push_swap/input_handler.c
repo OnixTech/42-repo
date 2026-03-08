@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 12:03:02 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/07 12:26:47 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/08 08:05:06 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	string_validation(char *str, int **size)
 		else
 			flag = 0;
 	}
-	printf("Numbers: %i\n", **size);
 	return (1);
 }
 int intjoin(char *str, int size, int **input)
@@ -72,7 +71,6 @@ int intjoin(char *str, int size, int **input)
 	while (i < size)
 	{
 		number = ft_atoi(str);
-		printf("%ld\n", number);
 		if (number > 2147483647 || number < -2147483648)
 			return (0);
 		(*input)[i++] = number;

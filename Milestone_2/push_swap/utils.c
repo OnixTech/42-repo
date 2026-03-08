@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:44:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/07 12:27:42 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/08 08:10:25 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ long	ft_atoi(char *str)
 		str++;
 	}
 	while(*str != ' ' && *str)
-		number += (number * 10) + (*str++) - '0';
+		number = (number * 10) + (*str++) - '0';
 	number *= sign;
 	return (number);
 }
