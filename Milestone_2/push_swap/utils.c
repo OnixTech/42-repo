@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:44:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/08 08:57:57 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/09 06:59:48 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ long	ft_atoi(char *str)
 
 	number = 0;
 	sign = 1;
-	if (*str == '-')
+	if (ft_sign(str))
 	{
-		sign *= -1;
+		if (*str == '-')
+			sign *= -1;
 		str++;
 	}
 	while(*str != ' ' && *str)
