@@ -14,14 +14,14 @@
 
 int	sort(int **stack_a, int *size_a, int **stack_b, int *size_b)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < *size_a)
+	while (i < *size_a)
 		printf("%d\n", (*stack_a)[i++]);
 	printf("\n");
 	i = 0;
-	while(i < *size_b)
+	while (i < *size_b)
 		printf("%d\n", (*stack_b)[i++]);
 	return (1);
 }

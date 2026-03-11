@@ -39,7 +39,7 @@ int	ft_digit_sign(char *c)
 long	ft_atoi(char *str)
 {
 	long	number;
-	int	sign;
+	int		sign;
 
 	number = 0;
 	sign = 1;
@@ -49,15 +49,15 @@ long	ft_atoi(char *str)
 			sign *= -1;
 		str++;
 	}
-	while(*str != ' ' && *str)
+	while (*str != ' ' && *str)
 		number = (number * 10) + (*str++) - '0';
 	number *= sign;
 	return (number);
 }
 
-int duplicate_input(int i, long number, int **input)
+int	duplicate_input(int i, long number, int **input)
 {
-	int k;
+	int	k;
 
 	if (i)
 	{

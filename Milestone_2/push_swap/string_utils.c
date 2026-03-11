@@ -19,7 +19,7 @@ int	string_validation(char *str, int *size)
 	flag = 0;
 	if (!ft_digit_sign(str))
 		return (0);
-	while(*str)
+	while (*str)
 	{
 		if (*str == ' ' && !ft_digit_sign(str + 1))
 			return (0);
@@ -40,10 +40,10 @@ int	string_validation(char *str, int *size)
 	return (1);
 }
 
-int str_intjoin(char *str, int size, int **input)
+int	str_intjoin(char *str, int size, int **input)
 {
 	long	number;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i < size)

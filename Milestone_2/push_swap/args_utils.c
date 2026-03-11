@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-int args_validation(int arg, char **str, int *size)
+int	args_validation(int arg, char **str, int *size)
 {
-	int i;
-	int k;
+	int	i;
+	int	k;
 
 	i = 1;
 	while (i < arg)
@@ -37,9 +37,9 @@ int args_validation(int arg, char **str, int *size)
 	return (1);
 }
 
-int args_intjoin(char **str, int size, int **input)
+int	args_intjoin(char **str, int size, int **input)
 {
-	int	i;
+	int		i;
 	long	number;
 
 	i = 0;

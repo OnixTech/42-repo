@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int error(int **stack_a, int **stack_b)
+int	error(int **stack_a, int **stack_b)
 {
 	if (stack_a && *stack_a)
 	{
@@ -28,7 +28,7 @@ int error(int **stack_a, int **stack_b)
 	return (0);
 }
 
-void init(int **stack_a, int *size_a, int **stack_b, int *size_b)
+void	init(int **stack_a, int *size_a, int **stack_b, int *size_b)
 {
 	*size_a = 0;
 	*stack_a = NULL;
@@ -36,7 +36,7 @@ void init(int **stack_a, int *size_a, int **stack_b, int *size_b)
 	*stack_b = NULL;
 }
 
-int init_stack_b(int size_a, int **stack_b, int *size_b)
+int	init_stack_b(int size_a, int **stack_b, int *size_b)
 {
 	*size_b = size_a;
 	*stack_b = (int *)malloc(sizeof(int) * *size_b);
@@ -44,7 +44,7 @@ int init_stack_b(int size_a, int **stack_b, int *size_b)
 		return (0);
 	return (1);
 }
-void end(int **stack_a, int **stack_b)
+void	end(int **stack_a, int **stack_b)
 {
 	if (stack_a && *stack_a)
 	{
