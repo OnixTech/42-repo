@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:44:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/09 06:59:48 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/11 20:14:00 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,18 @@ long	ft_atoi(char *str)
 		number = (number * 10) + (*str++) - '0';
 	number *= sign;
 	return (number);
+}
+
+int duplicate_input(int i, long number, int **input)
+{
+	int k;
+
+	if (i)
+	{
+		k = i;
+		while (k--)
+			if (number == (*input)[k])
+				return (1);
+	}
+	return (0);
 }

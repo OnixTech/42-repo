@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 08:34:20 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/09 08:24:55 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/11 20:15:40 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int str_intjoin(char *str, int size, int **input)
 {
 	long	number;
 	int	i;
-	int	k;
 
 	i = 0;
 	while (i < size)
@@ -52,13 +51,8 @@ int str_intjoin(char *str, int size, int **input)
 		number = ft_atoi(str);
 		if (number > 2147483647 || number < -2147483648)
 			return (0);
-		if (i)
-		{
-			k = i;
-			while (k--)
-				if (number == (*input)[k])
-					return (0);
-		}
+		if (duplicate_input(i, number, input))
+			return (0);
 		(*input)[i++] = number;
 		while (ft_digit_sign(str))
 			str++;
