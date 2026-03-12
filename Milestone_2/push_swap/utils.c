@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:44:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 11:06:07 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 14:49:16 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ long	ft_atoi(char *str)
 	return (number);
 }
 
-int	duplicate_input(int i, long number, int **input)
+int	duplicate_input(int i, long number, t_data *stack)
 {
 	int	k;
 
@@ -64,7 +64,7 @@ int	duplicate_input(int i, long number, int **input)
 	{
 		k = i;
 		while (k--)
-			if (number == (*input)[k])
+			if (number == stack->a[k])
 				return (1);
 	}
 	return (0);

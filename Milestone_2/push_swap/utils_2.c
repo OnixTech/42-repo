@@ -6,55 +6,55 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 20:25:23 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 11:06:17 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 14:49:50 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	error(int **stack_a, int **stack_b)
+int	error(t_data *stack)
 {
-	if (stack_a && *stack_a)
+	if (stack->a)
 	{
-		free(*stack_a);
-		*stack_a = NULL;
+		free(stack->a);
+		stack->a = NULL;
 	}
-	if (stack_b && *stack_b)
+	if (stack->b)
 	{
-		free(*stack_b);
-		*stack_b = NULL;
+		free(stack->b);
+		stack->b = NULL;
 	}
 	write(2, "Error\n", 6);
 	return (0);
 }
 
-void	init(int **stack_a, int *size_a, int **stack_b, int *size_b)
+void	init(t_data *stack)
 {
-	*size_a = 0;
-	*stack_a = NULL;
-	*size_b = 0;
-	*stack_b = NULL;
+	stack->a = NULL;
+	stack->size_a = 0;
+	stack->b = NULL;
+	stack->size_b = 0;
+	stack->capacity = 0;
 }
 
-int	init_stack_b(int size_a, int **stack_b, int *size_b)
+int	init_stack(t_data *stack)
 {
-	*size_b = size_a;
-	*stack_b = (int *)malloc(sizeof(int) * *size_b);
-	if (!*stack_b)
+	stack->b = (int *)malloc(sizeof(int) * stack->capacity);
+	if (!stack->b)
 		return (0);
 	return (1);
 }
 
-void	end(int **stack_a, int **stack_b)
+void	end(t_data *stack)
 {
-	if (stack_a && *stack_a)
+	if (stack->a)
 	{
-		free(*stack_a);
-		*stack_a = NULL;
+		free(stack->a);
+		stack->a = NULL;
 	}
-	if (stack_b && *stack_b)
+	if (stack->b)
 	{
-		free(*stack_b);
-		*stack_b = NULL;
+		free(stack->b);
+		stack->b = NULL;
 	}
 }

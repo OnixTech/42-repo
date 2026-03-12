@@ -6,22 +6,22 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/11 22:29:51 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 14:41:02 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sort(int **stack_a, int *size_a, int **stack_b, int *size_b)
+int	sort(t_data *stack)
 {
 	int	i;
 
 	i = 0;
-	while (i < *size_a)
-		printf("%d\n", (*stack_a)[i++]);
+	while (i < stack->capacity)
+		printf("%d\n", stack->a[i++]);
 	printf("\n");
 	i = 0;
-	while (i < *size_b)
-		printf("%d\n", (*stack_b)[i++]);
+	while (i < stack->capacity)
+		printf("%d\n", stack->b[i++]);
 	return (1);
 }
