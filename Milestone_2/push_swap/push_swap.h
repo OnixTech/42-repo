@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:13 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 14:38:48 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 19:45:20 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int		error(t_data *stack);
 void	init(t_data *stack);
 int		init_stack(t_data *stack);
 void	end(t_data *stack);
+/********************    utils_3.c.   ********************/
+void shift_down(int *stack, int i);
+void shift_up(int *stack, int size);
 /******************** input_handler.c ********************/
 int		parse_input(int arg, char **argc, t_data *stack);
 int		parse_string(char *argc, t_data *stack);
@@ -47,6 +50,15 @@ int		str_intjoin(char *str, t_data *stack);
 /********************   args_utils.c  ********************/
 int		args_validation(int arg, char **argc, t_data *stack);
 int		arg_intjoin(char **str, t_data *stack);
+/********************   operations.c. ********************/
+void	sa(t_data *stack);
+void	sb(t_data *stack);
+void	ss(t_data *stack);
+void	pa(t_data *stack);
+void	pb(t_data *stack);
+/******************** operations_2.c. ********************/
+void	ra(t_data *stack);
+void	rb(t_data *stack);
 /********************   push_swap.c.  ********************/
 int		sort(t_data *stack);
 

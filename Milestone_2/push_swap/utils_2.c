@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 20:25:23 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 14:49:50 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 18:04:24 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	init_stack(t_data *stack)
 	stack->b = (int *)malloc(sizeof(int) * stack->capacity);
 	if (!stack->b)
 		return (0);
+	stack->size_a = stack->capacity;
+	stack->size_b = 0;
 	return (1);
 }
 
