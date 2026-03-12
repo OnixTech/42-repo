@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 19:44:59 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 20:41:02 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ int	sort(t_data *stack)
 	pb(stack);
 	pb(stack);
 	pb(stack);
-	rb(stack);
+	pb(stack);
+	pb(stack);
+	rra(stack);
+	printf("size_a -> %i ", stack->size_a);
+	printf("size_b -> %i ", stack->size_b);
+	printf("capacity -> %i\n", stack->capacity);
 	i = 0;
 	while (i < stack->capacity)
 		printf("%d\n", stack->a[i++]);
@@ -38,22 +43,6 @@ int	sort(t_data *stack)
 	i = 0;
 	while (i < stack->capacity)
 		printf("%d\n", stack->b[i++]);
-	printf("size_a -> %i ", stack->size_a);
-	printf("size_b -> %i ", stack->size_b);
-	printf("capacity -> %i\n", stack->capacity);
-	printf("\n");
-	pa(stack);
-	pa(stack);
-	pa(stack);
-	pa(stack);
-	i = 0;
-	while (i < stack->capacity)
-		printf("%d\n", stack->a[i++]);
-	printf("\n");
-	ra(stack);
-	i = 0;
-	while (i < stack->capacity)
-		printf("%d\n", stack->a[i++]);
 	printf("size_a -> %i ", stack->size_a);
 	printf("size_b -> %i ", stack->size_b);
 	printf("capacity -> %i\n", stack->capacity);

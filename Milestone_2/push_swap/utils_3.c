@@ -6,13 +6,13 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 19:00:16 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 19:17:47 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 19:51:46 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void shift_down(int *stack, int i)
+void	shift_down(int *stack, int i)
 {
 	while (i >= 0)
 	{
@@ -21,9 +21,9 @@ void shift_down(int *stack, int i)
 	}
 }
 
-void shift_up(int *stack, int size)
+void	shift_up(int *stack, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size - 1)
@@ -31,4 +31,10 @@ void shift_up(int *stack, int size)
 		stack[i] = stack[i + 1];
 		i++;
 	}
+}
+
+void	rr(t_data *stack)
+{
+	ra(stack);
+	rb(stack);
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void sa(t_data *stack)
+void	sa(t_data *stack)
 {
 	int	container;
 
@@ -24,7 +24,7 @@ void sa(t_data *stack)
 	}
 }
 
-void sb(t_data *stack)
+void	sb(t_data *stack)
 {
 	int	container;
 
