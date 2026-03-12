@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 20:25:23 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/11 22:33:58 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 11:06:17 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	init_stack_b(int size_a, int **stack_b, int *size_b)
 		return (0);
 	return (1);
 }
+
 void	end(int **stack_a, int **stack_b)
 {
 	if (stack_a && *stack_a)

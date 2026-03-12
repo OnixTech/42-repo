@@ -15,9 +15,9 @@
 int	main(int arg, char **argc)
 {
 	int	*stack_a;
-	int *stack_b;
-	int size_a;
-	int size_b;
+	int	*stack_b;
+	int	size_a;
+	int	size_b;
 
 	init(&stack_a, &size_a, &stack_b, &size_b);
 	if (!parse_input(arg, argc, &size_a, &stack_a))
