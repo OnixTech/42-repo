@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:13 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 20:36:19 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/12 20:46:00 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	end(t_data *stack);
 void	shift_down(int *stack, int i);
 void	shift_up(int *stack, int size);
 void	rr(t_data *stack);
+void	rrr(t_data *stack);
 /******************** input_handler.c ********************/
 int		parse_input(int arg, char **argc, t_data *stack);
 int		parse_string(char *argc, t_data *stack);
