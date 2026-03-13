@@ -6,17 +6,20 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 19:00:16 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 20:46:14 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/13 12:16:42 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	shift_down(int *stack, int i)
+void	shift_down(int *stack, int size)
 {
-	while (i >= 0)
+	int	i;
+
+	i = size;
+	while (i > 0)
 	{
-		stack[i + 1] = stack[i];
+		stack[i] = stack[i - 1];
 		i--;
 	}
 }
