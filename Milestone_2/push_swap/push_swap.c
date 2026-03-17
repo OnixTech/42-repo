@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/13 15:23:12 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:16:45 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,109 @@
 
 int	sort(t_data *stack)
 {
+	// int	i;
+
+	// printf("size_a -> %i ", stack->size_a);
+	// printf("size_b -> %i ", stack->size_b);
+	// printf("capacity -> %i\n", stack->capacity);
+	// i = 0;
+	// while (i < stack->size_a)
+	// 	printf("%d\n", stack->a[i++]);
+	// printf("\n");
+	// i = 0;
+	// while (i < stack->size_b)
+	// 	printf("%d\n", stack->b[i++]);
+	// pb(stack);
+	// pb(stack);
+	// pb(stack);
+	// pb(stack);
+	// ra(stack);
+	// pa(stack);
+	// pa(stack);
+	// pa(stack);
+	// pa(stack);
+	// rrr(stack);
+	// printf("\n");
+	// printf("size_a -> %i ", stack->size_a);
+	// printf("size_b -> %i ", stack->size_b);
+	// printf("capacity -> %i\n", stack->capacity);
+	// i = 0;
+	// while (i < stack->size_a)
+	// 	printf("%d\n", stack->a[i++]);
+	// printf("\n");
+	// i = 0;
+	// while (i < stack->size_b)
+	// 	printf("%d\n", stack->b[i++]);
+	// printf("size_a -> %i ", stack->size_a);
+	// printf("size_b -> %i ", stack->size_b);
+	// printf("capacity -> %i\n", stack->capacity);
+	if (is_sort(stack))
+		write(1,"OK\n",3);
+	else
+	{
+		write(1, "KO\n", 3);
+		index_scheme(stack);
+	}
+	// i = 0;
+	// while (i < stack->size_a)
+	//  	printf("%d ", stack->a[i++]);
+	// printf("\n");
+	// 	i = 0;
+	// while (i < stack->size_b)
+	//  	printf("%d ", stack->b[i++]);
+	// printf("\n");
+	return (1);
+}
+
+int	is_sort(t_data *stack)
+{
 	int	i;
 
-	printf("size_a -> %i ", stack->size_a);
-	printf("size_b -> %i ", stack->size_b);
-	printf("capacity -> %i\n", stack->capacity);
 	i = 0;
-	while (i < stack->size_a)
-		printf("%d\n", stack->a[i++]);
+	while (i < stack->size_a - 2)
+	{
+		if (stack->a[i] > stack->a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int index_scheme(t_data *stack)
+{
+	int	i;
+	int	j;
+	int	tmp;
+	int	*scheme;
+
+	scheme = (int *)malloc(sizeof(int) * stack->capacity);
+	if (!scheme)
+		return (0);
+	i = 0;
+	while (i < stack->capacity)
+	{
+		scheme[i] = i;
+		i++;
+	}
+	i = 0;
+	while (i < stack->capacity - 1)
+	{
+		j = i + 1;
+		while (j < stack->capacity)
+		{
+			if (stack->a[scheme[i]] > stack->a[scheme[j]])
+			{
+				tmp = scheme[i];
+				scheme[i] = scheme[j];
+				scheme[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < stack->capacity)
+		printf("%d ", scheme[i++]);
 	printf("\n");
-	i = 0;
-	while (i < stack->size_b)
-		printf("%d\n", stack->b[i++]);
-	pb(stack);
-	pb(stack);
-	pb(stack);
-	rrr(stack);
-	printf("\n");
-	printf("size_a -> %i ", stack->size_a);
-	printf("size_b -> %i ", stack->size_b);
-	printf("capacity -> %i\n", stack->capacity);
-	i = 0;
-	while (i < stack->size_a)
-		printf("%d\n", stack->a[i++]);
-	printf("\n");
-	i = 0;
-	while (i < stack->size_b)
-		printf("%d\n", stack->b[i++]);
-	printf("size_a -> %i ", stack->size_a);
-	printf("size_b -> %i ", stack->size_b);
-	printf("capacity -> %i\n", stack->capacity);
 	return (1);
 }

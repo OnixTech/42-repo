@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:13 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 20:55:35 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/17 12:04:58 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,10 @@ void	rrb(t_data *stack);
 
 /********************   push_swap.c.  ********************/
 int		sort(t_data *stack);
+int		is_sort(t_data *stack);
+int index_scheme(t_data *stack);
+
+/********************   sort_helpers.c.  ********************/
+void sort_two(t_data *stack);
 
 #endif /* PUSH_SWAP_H */
