@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c push_swap.c utils.c utils_2.c utils_3.c \
 	string_utils.c args_utils.c input_handler.c \
-	operations.c operations_2.c sort_helpers.c
+	operations.c operations_2.c operations_3.c \
+	sort_helpers.c chunks.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 19:00:16 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/24 10:02:12 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/25 13:13:17 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,3 @@ void	shift_up(int *stack, int size)
 	}
 }
 
-void	rr(t_data *stack)
-{
-	ra(stack);
-	rb(stack);
-}
-
-void	rrr(t_data *stack)
-{
-	rra(stack);
-	rrb(stack);
-}

@@ -6,63 +6,11 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 12:03:03 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/24 12:15:13 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/27 11:28:18 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void sort_two(t_data *stack)
-{
-	if (stack->a[0] > stack->a[1])
-		sa(stack);
-}
-
-void sort_three(t_data *stack)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = stack->a[0];
-	b = stack->a[1];
-	c = stack->a[2];
-	if (a < b && b < c)
-		return ;
-	if (a > b && b > c)
-	{
-		sa(stack);
-		rra(stack);
-	}
-	if (a > b && a > c && c > b)
-		ra(stack);
-	if (c > a && c > b && a > b)
-		sa(stack);
-	if (b > a && b > c && c > a)
-	{
-		rra(stack);
-		sa(stack);
-	}
-	if (b > a && b > c && a > c)
-		rra(stack);
-}
-
-void sort_four_five(t_data *stack)
-{
-	int	min;
-
-	min = min_val(stack);
-	push_min(stack, min);
-	if (stack->size_a == 4)
-	{
-		min = min_val(stack);
-		push_min(stack, min);
-	}
-		sort_three(stack);
-		pa(stack);
-	if (stack->size_b)
-		pa(stack);
-}
 
 int	min_val(t_data *stack)
 {
@@ -96,3 +44,59 @@ void push_min(t_data *stack, int min)
 		rra(stack);
 	pb(stack);
 }
+
+void	get_scheme(t_data *stack, int	**scheme)
+{
+        int     i;
+        int     j;
+        int     tmp;
+
+        *scheme = (int *)malloc(sizeof(int) * stack->capacity);
+        if (!*scheme)
+                return ;
+        i = -1;
+        while (++i < stack->capacity)
+                (*scheme)[i] = i;
+	i = 0;
+        while (i < stack->capacity - 1)
+        {
+                j = i + 1;
+                while (j < stack->capacity)
+                {
+                        if (stack->a[(*scheme)[i]] > stack->a[(*scheme)[j]])
+                        {
+                                tmp = (*scheme)[i];
+                                (*scheme)[i] = (*scheme)[j];
+                                (*scheme)[j] = tmp;
+                        }
+			j++;
+                }
+                i++;
+        }
+}
+
+void stack_indexed(t_data *stack)
+{
+	int	i;
+	int	*scheme;
+	int	*idx;
+
+	get_scheme(stack, &scheme);
+	if (!scheme)
+		return ;
+	idx = malloc(sizeof(int) * stack->capacity);
+	if (!idx)
+	{
+		free(scheme);
+		return ;
+	}
+	i = -1;
+	while (++i < stack->capacity)
+		idx[scheme[i]] = i;
+	i = -i;
+	while (++i < stack->capacity)
+		stack->a[i] = idx[i];
+	free(scheme);
+	free(idx);
+}
+
