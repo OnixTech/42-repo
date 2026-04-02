@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 19:36:50 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/21 21:10:29 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/31 14:49:43 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ra(t_data *stack)
 		stack->a[stack->size_a - 1] = container;
 	}
 	write(1, "ra\n", 3);
+	stack->operations++;
 }
 
 void	rb(t_data *stack)
@@ -36,6 +37,7 @@ void	rb(t_data *stack)
 		stack->b[stack->size_b - 1] = container;
 	}
 	write(1, "rb\n", 3);
+	stack->operations++;
 }
 
 void	rra(t_data *stack)
@@ -49,6 +51,7 @@ void	rra(t_data *stack)
 		stack->a[0] = container;
 	}
 	write(1, "rra\n", 4);
+	stack->operations++;
 }
 
 void	rrb(t_data *stack)
@@ -62,4 +65,5 @@ void	rrb(t_data *stack)
 		stack->b[0] = container;
 	}
 	write(1, "rrb\n", 4);
+	stack->operations++;
 }

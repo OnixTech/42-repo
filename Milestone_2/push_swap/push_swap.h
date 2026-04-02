@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:13 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/27 11:05:23 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/31 13:16:07 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_data
 	int	size_a;
 	int	size_b;
 	int	capacity;
+	int	pb_counter;
+	int	operations;
 }		t_data;
 
 /******************************     utils.c      ******************************/

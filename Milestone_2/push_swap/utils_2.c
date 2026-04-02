@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 20:25:23 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 18:04:24 by luciano          ###   ########.fr       */
+/*   Updated: 2026/03/31 13:04:00 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	init(t_data *stack)
 	stack->b = NULL;
 	stack->size_b = 0;
 	stack->capacity = 0;
+	stack->pb_counter = 0;
+	stack->operations = 0;
 }
 
 int	init_stack(t_data *stack)
