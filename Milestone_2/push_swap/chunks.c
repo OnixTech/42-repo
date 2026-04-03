@@ -6,7 +6,7 @@
 /*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 17:19:35 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/31 14:50:18 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/04 00:20:33 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,8 @@ void	chunks(t_data *stack)
 {
 	int ch_size;
 
-	ch_size = chunks_size(stack);
+	ch_size = chunk_size(stack);
 	push_chunk_b(stack, ch_size);
-}
-
-int	chunks_size(t_data *stack)
-{
-	if (stack->size_a < 100)
-		return (10);
-	else if (stack->size_a < 500)
-		return (30);
-	else	
-		return (50);
 }
 
 void	push_chunk_b(t_data *stack, int  ch_size)
@@ -37,7 +27,6 @@ void	push_chunk_b(t_data *stack, int  ch_size)
 	int	end;
 
 	int i;
-	int j;
 	i = 0;
 	while (i < stack->size_a)
 		printf("%d ", stack->a[i++]);
@@ -55,50 +44,36 @@ void	push_chunk_b(t_data *stack, int  ch_size)
 	start = 0;
 	end = ch_size - 1;
 	pushed = 0;
-	while (stack->size_a > ch_size && pushed < ch_size / 2)
+	while (stack->size_a > ch_size && pushed < ch_size)
 	{
-		i = 0;
-		while (i <= stack->size_a / 2)
-		{
-			if (stack->a[i] >= start && stack->a[i] <= end / 2)
-				break ;
-			i++;
-		}
-		j = 0;
-		while (j < stack->size_a / 2)
-		{
-			if (stack->a[stack->size_a - j - 1] >= start && stack->a[stack->size_a - j - 1] <= end / 2)
-				break ;
-			j++;
-		}
-		if (i <= (j + 1))
-		{
-			while (i)
-			{
-				ra(stack);
-				i--;
-			}
-			pb(stack);
-			if (stack->size_b > 1 && stack->b[0] < stack->b[1])
-				sb(stack);
-			pushed++;
-		}
-		else
-		{
-			j++;
-			while (j--)
-			{
-				rra(stack);
-			}
-			pb(stack);
-			if (stack->size_b > 1 && stack->b[0] < stack->b[1])
-				sb(stack);
-			pushed++;
-		}
+		chunk_bottom(stack, start, end, &pushed);
+		chunk_top(stack, start, end, &pushed);
 	}
 	printf("\nstack b : ");
 	i = 0;
 	while (i < stack->size_b)
 		printf("%d ", stack->b[i++]);
 	printf("\n");
+}
+
+void	chunk_bottom(t_data *stack, int start, int end, int *pushed)
+{
+	int	half_bottom;
+	int	i;
+	int	j;
+
+	half_bottom = ((end - start) / 2) + start;
+	index_positions(stack, start, half_bottom, &i, &j);
+	push_cheapest(stack, i, j, pushed);
+}
+
+void	chunk_top(t_data *stack, int start, int end, int *pushed)
+{
+	int	half_top;
+	int	i;
+	int	j;
+
+	half_top = ((end - start) / 2) + start + 1;
+	index_positions(stack, half_top, end, &i, &j);
+	push_cheapest(stack, i, j, pushed);
 }
