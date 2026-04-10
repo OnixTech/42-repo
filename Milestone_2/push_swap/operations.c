@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 15:28:03 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/31 14:55:28 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/10 12:02:29 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	pb(t_data *stack)
 	{
 		shift_down(stack->b, stack->size_b);
 		stack->b[0] = stack->a[0];
+		if (stack->a[0] == stack->capacity -1)
+			printf("from pb -> %d\n", stack->a[0]);
 		shift_up(stack->a, stack->size_a);
 		stack->size_b++;
 		stack->size_a--;

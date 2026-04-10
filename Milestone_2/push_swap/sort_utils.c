@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciano <lupetill@student.42berlin.de>     +#+  +:+       +#+        */
+/*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 23:06:25 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/03 23:06:41 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/10 19:24:40 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	min_val(t_data *stack)
 	while ( i < stack->size_a - 1)
 	{
 		j = 0;
-		while (stack->a[i] <= stack->a[i + j] && i + j < stack->size_a)  
+		while (stack->a[i] <= stack->a[i + j] && i + j < stack->size_a)
 			j++;
 		if (i + j == stack->size_a)
 			break ;
@@ -90,13 +90,33 @@ void stack_indexed(t_data *stack)
 		free(scheme);
 		return ;
 	}
-	i = -1;
-	while (++i < stack->capacity)
+	i = 0;
+	while (i < stack->capacity)
+	{
 		idx[scheme[i]] = i;
-	i = -i;
-	while (++i < stack->capacity)
+		i++;
+	}
+	i = 0;
+	while (i < stack->capacity)
+	{
 		stack->a[i] = idx[i];
+		i++;
+	}
 	free(scheme);
 	free(idx);
 }
 
+void	stack_a_cleaner(t_data *stack)
+{
+	int	i;
+	int	j;
+
+	j = stack->size_a;
+	i = 0;
+	while (stack->size_b && i < j)
+	{
+		if (stack->a[0] != stack->capacity - 1)
+			pb(stack);
+		i++;
+	}
+}

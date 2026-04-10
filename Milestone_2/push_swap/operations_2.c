@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 19:36:50 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/31 14:49:43 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/10 18:44:10 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	rra(t_data *stack)
 	if (stack->size_a > 1)
 	{
 		container = stack->a[stack->size_a - 1];
-		shift_down(stack->a, stack->size_a);
+		shift_down(stack->a, stack->size_a - 1);
 		stack->a[0] = container;
 	}
 	write(1, "rra\n", 4);
@@ -61,7 +61,7 @@ void	rrb(t_data *stack)
 	if (stack->size_b > 1)
 	{
 		container = stack->b[stack->size_b - 1];
-		shift_down(stack->b, stack->size_b);
+		shift_down(stack->b, stack->size_b - 1);
 		stack->b[0] = container;
 	}
 	write(1, "rrb\n", 4);

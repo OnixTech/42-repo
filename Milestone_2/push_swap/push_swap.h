@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:13 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/04 00:12:21 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/10 19:21:20 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,26 +90,30 @@ void	rrr(t_data *stack);
 /*******************************    push_swap.c   *****************************/
 void		sort(t_data *stack);
 int		is_sorted(t_data *stack);
+void		stack_a(t_data *stack);
+void		stack_b(t_data *stack);
 /******************************************************************************/
 
-/*******************************  sort_helpers.c  *****************************/
+/*******************************  sort_utils.c  *****************************/
 void	push_min(t_data *stack, int min);
 int		min_val(t_data *stack);
 void		get_scheme(t_data *stack, int **scheme);
 void		stack_indexed(t_data *stack);
+void	stack_a_cleaner(t_data *stack);
 /******************************************************************************/
 
 /*******************************     chunks.c     *****************************/
 void	chunks(t_data *stack);
 void	push_chunk_b(t_data *stack, int  ch_size);
-void	chunk_bottom(t_data *stack, int start, int end, int *pushed);
-void	chunk_top(t_data *stack, int start, int end, int *pushed);
+void	chunk_bottom(t_data *stack, int start, int end);
+void	chunk_top(t_data *stack, int start, int end);
+int	exist_range(t_data *stack, int start, int end);
 /******************************************************************************/
 
 /******************************  chunks_utils.c   *****************************/
 int	chunk_size(t_data *stack);
 void	index_positions(t_data *stack, int start, int end, int *i, int *j);
-void	push_cheapest(t_data *stack, int i, int j, int *pushed);
+void	push_cheapest(t_data *stack, int i, int j);
 /******************************************************************************/
 
 #endif /* PUSH_SWAP_H */
