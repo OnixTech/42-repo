@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/10 18:35:47 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/10 19:59:19 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sort(t_data *stack)
 		else
 			chunks(stack);
 	}
-	stack_a_cleaner(stack);		
+	stack_a_cleaner(stack);
 //	stack_a(stack);
 //	stack_b(stack);
 	while (stack->size_b)
@@ -54,7 +54,7 @@ void	sort(t_data *stack)
 			pa(stack);
 		}
 	}
-//	stack_a(stack);
+	//stack_a(stack);
 }
 
 int	is_sorted(t_data *stack)
@@ -92,4 +92,3 @@ void stack_b(t_data *stack)
                 printf ("%d ", stack->b[i++]);
         printf("\n");
 }
-

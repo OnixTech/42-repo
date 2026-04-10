@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 17:19:35 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/10 18:33:45 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/10 20:02:26 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ void	push_chunk_b(t_data *stack, int  ch_size)
 	int	end;
 
 	start = 0;
-	end = (ch_size / 2) - 1;
+	end = ch_size - 1;
 	while (stack->size_a > 5)
 	{
 		while (stack->size_a > 5 && exist_range(stack, start, end))
 			chunk_bottom(stack, start, end);
+		//start = end + 1;
+		//end = start + (ch_size / 2) - 1;
+		//while (stack->size_a > 5 && exist_range(stack, start, end))
+		//	chunk_top(stack, start, end);
 		start = end + 1;
-		end = start + (ch_size / 2) - 1;
-		while (stack->size_a > 5 && exist_range(stack, start, end))
-			chunk_top(stack, start, end);
-		start = end + 1;
-		end = start + (ch_size / 2) - 1;
+		end = start + ch_size - 1;
 		if (end >= stack->capacity)
 			end = stack->capacity - 1;
 	}
