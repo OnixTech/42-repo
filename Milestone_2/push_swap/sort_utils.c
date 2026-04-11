@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 23:06:25 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/10 19:24:40 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/11 17:18:28 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	min_val(t_data *stack)
 {
 	int	i;
 	int	j;
+
 	i = 0;
-	while ( i < stack->size_a - 1)
+	while (i < stack->size_a - 1)
 	{
 		j = 0;
 		while (stack->a[i] <= stack->a[i + j] && i + j < stack->size_a)
@@ -29,7 +30,7 @@ int	min_val(t_data *stack)
 	return (i);
 }
 
-void push_min(t_data *stack, int min)
+void	push_min(t_data *stack, int min)
 {
 	if (min == 1)
 		sa(stack);
@@ -45,78 +46,60 @@ void push_min(t_data *stack, int min)
 	pb(stack);
 }
 
-void	get_scheme(t_data *stack, int	**scheme)
+int	*get_scheme(t_data *stack)
 {
-        int     i;
-        int     j;
-        int     tmp;
+	int	i;
+	int	j;
+	int	tmp;
+	int	*scheme;
 
-        *scheme = (int *)malloc(sizeof(int) * stack->capacity);
-        if (!*scheme)
-                return ;
-        i = -1;
-        while (++i < stack->capacity)
-                (*scheme)[i] = i;
+	scheme = set_scheme(stack->capacity);
+	if (!scheme)
+		return (NULL);
 	i = 0;
-        while (i < stack->capacity - 1)
-        {
-                j = i + 1;
-                while (j < stack->capacity)
-                {
-                        if (stack->a[(*scheme)[i]] > stack->a[(*scheme)[j]])
-                        {
-                                tmp = (*scheme)[i];
-                                (*scheme)[i] = (*scheme)[j];
-                                (*scheme)[j] = tmp;
-                        }
+	while (i < stack->capacity - 1)
+	{
+		j = i + 1;
+		while (j < stack->capacity)
+		{
+			if (stack->a[scheme[i]] > stack->a[scheme[j]])
+			{
+				tmp = scheme[i];
+				scheme[i] = scheme[j];
+				scheme[j] = tmp;
+			}
 			j++;
-                }
-                i++;
-        }
+		}
+		i++;
+	}
+	return (scheme);
 }
 
-void stack_indexed(t_data *stack)
+int	*set_scheme(int capacity)
 {
 	int	i;
 	int	*scheme;
-	int	*idx;
 
-	get_scheme(stack, &scheme);
+	scheme = malloc(sizeof(int) * capacity);
 	if (!scheme)
-		return ;
-	idx = malloc(sizeof(int) * stack->capacity);
-	if (!idx)
-	{
-		free(scheme);
-		return ;
-	}
+		return (NULL);
 	i = 0;
-	while (i < stack->capacity)
+	while (i < capacity)
 	{
-		idx[scheme[i]] = i;
+		scheme[i] = i;
 		i++;
 	}
+	return (scheme);
+}
+
+void	indexer_machine(t_data *stack, int *idx)
+{
+	int	i;
+
 	i = 0;
 	while (i < stack->capacity)
 	{
 		stack->a[i] = idx[i];
-		i++;
-	}
-	free(scheme);
-	free(idx);
-}
-
-void	stack_a_cleaner(t_data *stack)
-{
-	int	i;
-	int	j;
-
-	j = stack->size_a;
-	i = 0;
-	while (stack->size_b && i < j)
-	{
-		if (stack->a[0] != stack->capacity - 1)
-			pb(stack);
 		i++;
 	}
 }

@@ -35,4 +35,3 @@ void	shift_up(int *stack, int size)
 		i++;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 17:19:35 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/10 20:02:26 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/11 16:44:11 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	chunks(t_data *stack)
 {
-	int ch_size;
+	int	ch_size;
 
 	ch_size = chunk_size(stack);
 	push_chunk_b(stack, ch_size);
-	//push_chunk_a(stack, ch_size);
 }
 
-void	push_chunk_b(t_data *stack, int  ch_size)
+void	push_chunk_b(t_data *stack, int ch_size)
 {
 	int	start;
 	int	end;
@@ -31,11 +30,7 @@ void	push_chunk_b(t_data *stack, int  ch_size)
 	while (stack->size_a > 5)
 	{
 		while (stack->size_a > 5 && exist_range(stack, start, end))
-			chunk_bottom(stack, start, end);
-		//start = end + 1;
-		//end = start + (ch_size / 2) - 1;
-		//while (stack->size_a > 5 && exist_range(stack, start, end))
-		//	chunk_top(stack, start, end);
+			select_number(stack, start, end);
 		start = end + 1;
 		end = start + ch_size - 1;
 		if (end >= stack->capacity)
@@ -46,34 +41,26 @@ void	push_chunk_b(t_data *stack, int  ch_size)
 			pb(stack);
 }
 
-int	exist_range(t_data *stack, int start, int end)
+void	select_number(t_data *stack, int start, int end)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (i < stack->size_a)
+	while (i <= stack->size_a / 2)
 	{
 		if (stack->a[i] >= start && stack->a[i] <= end)
-			return (1);
+			if (stack->a[i] != stack->capacity - 1)
+				break ;
 		i++;
 	}
-	return (0);
-}
-
-void	chunk_bottom(t_data *stack, int start, int end)
-{
-	int	i;
-	int	j;
-
-	index_positions(stack, start, end, &i, &j);
-	push_cheapest(stack, i, j);
-}
-
-void	chunk_top(t_data *stack, int start, int end)
-{
-	int	i;
-	int	j;
-
-	index_positions(stack, start, end, &i, &j);
+	j = stack->size_a - 1;
+	while (j > stack->size_a / 2)
+	{
+		if (stack->a[j] >= start && stack->a[j] <= end)
+			if (stack->a[j] != stack->capacity - 1)
+				break ;
+		j--;
+	}
 	push_cheapest(stack, i, j);
 }
