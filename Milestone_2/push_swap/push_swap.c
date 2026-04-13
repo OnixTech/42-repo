@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:39:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/11 17:19:45 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/13 13:26:22 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sort(t_data *stack)
 	}
 	stack_a_cleaner(stack);
 	push_back_to_a(stack);
-	if (stack->a[0] == stack->capacity - 1)
+	if (stack->size_a > 1 && stack->a[0] == stack->capacity - 1)
 		ra(stack);
 }
 

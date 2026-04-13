@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 22:44:10 by luciano           #+#    #+#             */
-/*   Updated: 2026/03/12 14:49:16 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/13 14:28:34 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_sign(char *c)
 
 int	ft_digit_sign(char *c)
 {
+	if (!*c)
+		return (1);
 	if (ft_sign(c))
 		return (1);
 	if (*c >= '0')

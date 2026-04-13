@@ -6,7 +6,7 @@
 /*   By: luciano <luciano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 20:25:23 by luciano           #+#    #+#             */
-/*   Updated: 2026/04/09 13:12:16 by luciano          ###   ########.fr       */
+/*   Updated: 2026/04/13 12:53:12 by luciano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	error(t_data *stack)
 		free(stack->b);
 		stack->b = NULL;
 	}
+	write(2, "Error\n", 6);
 	return (0);
 }
 
