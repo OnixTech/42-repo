@@ -1,8 +1,4 @@
 def input_temperature(temp_str) -> int:                                    
-    
-    nbr = int(temp_str)
-
-    if nbr 
     return int(temp_str)
 
 
