@@ -29,8 +29,6 @@ int	ft_sign(char *c)
 
 int	ft_digit_sign(char *c)
 {
-	if (!*c)
-		return (1);
 	if (ft_sign(c))
 		return (1);
 	if (*c >= '0')
@@ -46,6 +44,8 @@ long	ft_atoi(char *str)
 
 	number = 0;
 	sign = 1;
+	while (*str && *str == ' ')
+		str++;
 	if (ft_sign(str))
 	{
 		if (*str == '-')

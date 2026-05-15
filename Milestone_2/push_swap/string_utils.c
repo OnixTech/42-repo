@@ -14,28 +14,24 @@
 
 int	string_validation(char *str, t_data *stack)
 {
-	int	flag;
-
-	flag = 0;
-	if (!ft_digit_sign(str))
-		return (0);
 	while (*str)
 	{
-		if (*str == ' ' && !ft_digit_sign(str + 1))
+		while (*str && *str == ' ')
+			str++;
+		if (*str && !ft_digit_sign(str))
 			return (0);
 		if (ft_sign(str) && !ft_isdigit(str + 1))
 			return (0);
-		if (ft_isdigit(str++))
+		if (ft_digit_sign(str))
 		{
-			if (!ft_isdigit(str) && *str != ' ')
-				if (*str != '\0')
-					return (0);
-			if (flag == 0)
-				stack->capacity += 1;
-			flag = 1;
+			stack->capacity += 1;
+			str++;
 		}
-		else
-			flag = 0;
+		while (ft_isdigit(str))
+			str++;
+		if (!ft_isdigit(str) && *str != ' ')
+			if (*str != '\0')
+				return (0);
 	}
 	return (1);
 }
@@ -46,8 +42,10 @@ int	str_intjoin(char *str, t_data *stack)
 	int		i;
 
 	i = 0;
-	while (i < stack->capacity)
+	while (*str && i < stack->capacity)
 	{
+		while (*str && *str == ' ')
+			str++;
 		number = ft_atoi(str);
 		if (number > 2147483647 || number < -2147483648)
 			return (0);
@@ -58,7 +56,6 @@ int	str_intjoin(char *str, t_data *stack)
 			str++;
 		if (*str == '\0')
 			break ;
-		str++;
 	}
 	return (1);
 }
