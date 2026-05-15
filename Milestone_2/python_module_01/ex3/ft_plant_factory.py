@@ -1,14 +1,14 @@
-class Plant:                                                                    
-    def __init__(self, name: str, height: int, age: int) -> None:
+class Plant:
+    def __init__(self: "Plant", name: str, height: int, age: int) -> None:
         self.name = name
         self.height = height
         self.age = age
 
-    def show(self) -> None:
+    def show(self: "Plant") -> None:
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 
-if __name__ == "__main__":
+def main() -> None:
     print("=== Plant Factory Output ===")
 
     plants = [
@@ -20,5 +20,9 @@ if __name__ == "__main__":
     ]
 
     for plant in plants:
-        print("Created:", end= " ")
+        print("Created:", end=" ")
         plant.show()
+
+
+if __name__ == "__main__":
+    main()

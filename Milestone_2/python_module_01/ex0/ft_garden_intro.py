@@ -1,4 +1,4 @@
-def ft_garden_intro():
+def ft_garden_intro() -> None:
     plant = "Rose"
     height = 25
     age = 30
@@ -9,5 +9,9 @@ def ft_garden_intro():
     print("=== End of Program ===")
 
 
-if __name__ == "__main__":
+def main() -> None:
     ft_garden_intro()
+
+
+if __name__ == "__main__":
+    main()
