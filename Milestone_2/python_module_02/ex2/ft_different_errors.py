@@ -23,16 +23,16 @@ def test_error_types() -> None:
         try:
             garden_operations(i)
 
-        except  ValueError as err:
+        except ValueError as err:
             print(f"Caught ValueError: {err}")
 
-        except  ZeroDivisionError as err:
+        except ZeroDivisionError as err:
             print(f"Caught ZeroDivisionError: {err}")
 
-        except  FileNotFoundError as err:
+        except FileNotFoundError as err:
             print(f"Caught FileNotFoundError: {err}")
 
-        except  TypeError as err:
+        except TypeError as err:
             print(f"Caught TypeError: {err}")
 
     print("\nAll error types tested successfully!")
@@ -40,4 +40,3 @@ def test_error_types() -> None:
 
 if __name__ == "__main__":
     test_error_types()
-        

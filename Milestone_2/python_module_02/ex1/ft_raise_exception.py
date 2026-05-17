@@ -1,4 +1,4 @@
-def input_temperature(temp_str) -> int:                                    
+def input_temperature(temp_str) -> int:
     return int(temp_str)
 
 
@@ -22,8 +22,6 @@ def test_temperature() -> None:
         print(f"Caught input_temperature error: {error}")
 
     print("\nAll tests completed - program didn't crush!")
-
-
 
 
 if __name__ == "__main__":
