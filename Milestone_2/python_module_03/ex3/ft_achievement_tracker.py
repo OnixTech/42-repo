@@ -14,7 +14,6 @@ def gen_player_achievements() -> set:
 
     all_achievements = ["A", "B", "C", "D", "E", "F", "G", "H", "I",
     "J", "K"]
-
     achievements = set()
     total = random.randint(5, 9)
     
@@ -37,7 +36,13 @@ def main() -> None:
     d = Player("Angelina")
     d.show()
 
-    print(f"All distinct achievements: {a.ach.union(b.ach, c.ach, d.ach)}")
+    print(f"\nAll distinct achievements: {a.ach.union(b.ach, c.ach, d.ach)}")
+    print(f"\nCommon achievements: {a.ach.intersection(a.ach, b.ach, c.ach, d.ach)}")
+
+    print(f"\nOnly {a.name} has: {a.ach.difference(b.ach, c.ach, d.ach)}")
+    print(f"Only {b.name} has: {b.ach.difference(a.ach, c.ach, d.ach)}")
+    print(f"Only {c.name} has: {c.ach.difference(b.ach, a.ach, d.ach)}")
+    print(f"Only {d.name} has: {d.ach.difference(b.ach, c.ach, a.ach)}")
 
 
 if __name__ == "__main__":
