@@ -2,7 +2,7 @@ import random
 
 
 ALL_ACHIEVEMENTS = ["A", "B", "C", "D", "E", "F", "G", "H", "I",
-"J", "K"]
+                    "J", "K"]
 
 
 class Player():
@@ -11,14 +11,14 @@ class Player():
         self.ach = gen_player_achievements()
 
     def show(self) -> None:
-        print(f"Player {self.name}: {self.ach}") 
+        print(f"Player {self.name}: {self.ach}")
 
 
 def gen_player_achievements() -> set:
 
-    achievements = set()
+    achievements: set[str] = set()
     total = random.randint(5, 9)
-    
+
     while len(achievements) < total:
         achievement = random.choice(ALL_ACHIEVEMENTS)
         achievements.add(achievement)
@@ -28,7 +28,7 @@ def gen_player_achievements() -> set:
 
 def main() -> None:
     print("=== Achievement Tracker System ===\n")
-    
+
     a = Player("Miguel")
     a.show()
     b = Player("Diego")
