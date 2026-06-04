@@ -20,7 +20,8 @@ def main() -> None:
     print(f"Score average: {average}")
 
     higher = {name: score for name, score in scores.items() if score > average}
-    print(f"High scores: {high_scores}")
+    print(f"High scores: {higher}")
+
 
 if __name__ == "__main__":
     main()

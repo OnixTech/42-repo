@@ -11,7 +11,7 @@ def gen_event() -> typing.Generator[tuple[str, str], None, None]:
 
 
 def consume_events(events: list[tuple[str, str]]) -> typing.Generator[
-    tuple[str, str], None, None]:
+                   tuple[str, str], None, None]:
     while len(events) > 0:
         index = random.randrange(len(events))
         yield events.pop(index)
@@ -38,4 +38,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()    
+    main()

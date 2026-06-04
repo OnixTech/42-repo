@@ -7,7 +7,7 @@ def main() -> None:
     i = 1
     while i < len(sys.argv):
         item = sys.argv[i].split(":")
-        
+
         if len(item) != 2:
             print(f"Error - invalid parameter '{sys.argv[i]}'")
         else:
@@ -32,12 +32,12 @@ def main() -> None:
 
     most = list(inventory.keys())[0]
     least = list(inventory.keys())[0]
-    for item in inventory:
-        if inventory[most] < inventory[item]:
-            most = item
+    for key in inventory:
+        if inventory[most] < inventory[key]:
+            most = key
 
-        if inventory[least] > inventory[item]:
-            least = item
+        if inventory[least] > inventory[key]:
+            least = key
 
     print(f"Item most abundant: {most} with quantity {inventory[most]}")
     print(f"Item least abundant: {least} with quantity {inventory[least]}")
