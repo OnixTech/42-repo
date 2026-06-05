@@ -10,12 +10,12 @@ def main() -> None:
     filename = sys.argv[1]
 
     print("=== Cyber Archives Recovery ===")
-    print(f"Accesing file '{filename}'")
+    print(f"Accessing file '{filename}'")
 
     try:
         file: typing.IO[str] = open(filename, "r")
     except OSError as err:
-        print(f"Error opening file '{filename}': {err}")
+        sys.stderr.write(f"Error opening file '{filename}': {err}\n")
         return
 
     print("---\n")
@@ -44,6 +44,9 @@ def main() -> None:
     new_name = sys.stdin.readline()
 
     if new_name != "":
+        new_name = new_name[:-1]
+        # delete the las character '\n' [start:end]
+        # in negatives indexs '-1' is the last charater
         new_file: typing.IO[str] = open(new_name, "w")
         new_file.write(new_content)
         new_file.close()
@@ -55,4 +58,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
