@@ -9,19 +9,19 @@ def main() -> None:
 
     filename = sys.argv[1]
 
-    print("=== Cyber Archives Recovery ===")
+    print("=== Cyber Archives Recovery & Preservation ===")
     print(f"Accessing file '{filename}'")
 
     try:
         file: typing.IO[str] = open(filename, "r")
     except OSError as err:
-        sys.stderr.write(f"Error opening file '{filename}': {err}\n")
+        sys.stderr.write(f"[STDERR] Error opening file '{filename}': {err}\n")
         return
 
-    print("---\n")
+    print("---")
     content = file.read()
     print(content)
-    print("\n---")
+    print("---")
 
     file.close()
     print(f"File '{filename}' closed.\n")
@@ -35,19 +35,28 @@ def main() -> None:
         else:
             new_content += c
 
-    print("---\n")
+    print("---")
     print(new_content)
-    print("\n---")
+    print("---")
 
     sys.stdout.write("Enter your new file name (or empty): ")
     sys.stdout.flush()
     new_name = sys.stdin.readline()
+    new_name = new_name[:-1]
+    # delete the las character '\n' [start:end]
+    # in negatives indexs '-1' is the last charater
 
     if new_name != "":
-        new_name = new_name[:-1]
-        # delete the las character '\n' [start:end]
-        # in negatives indexs '-1' is the last charater
-        new_file: typing.IO[str] = open(new_name, "w")
+        print(f"Saving data to '{new_name}'")
+
+        try:
+            new_file: typing.IO[str] = open(new_name, "w")
+        except OSError as err:
+            sys.stderr.write(
+                f"[STDERR] Error opening file '{new_name}': {err}\n")
+            print("Data not saved.")
+            return
+
         new_file.write(new_content)
         new_file.close()
 
