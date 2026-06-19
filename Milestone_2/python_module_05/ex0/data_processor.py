@@ -64,6 +64,8 @@ class TextProcessor(DataProcessor):
                     return False
             return True
 
+        return False
+
     def ingest(self, data: str | list[str]) -> None:
         if self.validate(data) == False:
             raise Exception("Improper text data")
@@ -77,12 +79,12 @@ class TextProcessor(DataProcessor):
 class LogProcessor(DataProcessor):
 
     def validate(self, data: typing.Any) -> bool:
-        if _is_dict(data):
-            return True        
+        if self._is_dict(data):
+            return True
 
         if isinstance(data, list):
             for item in data:
-               if not _is_dict(item):
+               if not self._is_dict(item):
                     return False
             return True
 
@@ -99,9 +101,9 @@ class LogProcessor(DataProcessor):
             if not isinstance(value, str):
                 return False
 
-        return True      
+        return True
 
-    def ingest(self, data: dict[str:str] | list[dict[str : str]]) -> None:
+    def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
         if not self.validate(data):
             raise Exception("Improper log data")
 
@@ -117,7 +119,50 @@ def main() -> None:
 
     print("Testing Numeric processor...")
     numeric = NumericProcessor()
-    print(f"Testing valid input '42': {numeric.validate(42)}")
+    print(f"Trying to validate input '42': {numeric.validate(42)}")
+    print(f"Trying to validate input 'Hello': {numeric.validate('Hello')}")
+
+    print("Test invalid ingestion of string 'foo' without prior validation")
+    try:
+        numeric.ingest("foo")
+    except Exception as err:
+        print(f"Got exception: {err}")
+
+    print("Processing data: [1, 2, 3, 4, 5]")
+    numbers = [1, 2, 3, 4, 5]
+    numeric.ingest(numbers)
+    print("Extracting 3 values")
+    for i in range(0, 3):
+        num_o = numeric.output()
+        print(f"Numeric value {num_o[0]}: {num_o[1]}")
+        i += 1
+
+    print("Testing Text Processor...")
+    text = TextProcessor()
+    print(f"Trying to validate input '42': {text.validate(42)}")
+    words = ['Hello', 'Nexus', 'World']
+    print(f"Processing data: {words}")
+    text.ingest(words)
+    print("Extracting 1 value...")
+    text_o = text.output()
+    print(f"Text value {text_o[0]}: {text_o[1]}")
+
+    print("Testing Log Processor...")
+    log = LogProcessor()
+    print(f"Trying to validate input 'Hello': {log.validate('Hello')}")
+    logs = [{"log_level": "NOTICE", "log_message": "Connection to server"},
+            {"log_level": "ERROR", "log_message": "Unauthorized access!!"}]
+    print(f"Processing data: {logs}")
+    log.ingest(logs)
+    print("Extracting 2 values...")
+    log_o = log.output()
+    level = log_o[0]
+    message = log_o[1]
+    print(f"Log entry {level}: {message}")
+    log_o1 = log.output()
+    level = log_o1[0]
+    message = log_o1[1]
+    print(f"Log entry {level}: {message}")
 
 
 if __name__ == "__main__":
