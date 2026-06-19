@@ -9,8 +9,8 @@ def main() -> None:
 
     filename = sys.argv[1]
 
-    print("=== Cyber Archives Recovery ===")
-    print(f"Accesing file '{filename}'")
+    print("=== Cyber Archives Recovery & Preservation ===")
+    print(f"Accessing file '{filename}'")
 
     try:
         file: typing.IO[str] = open(filename, "r")
@@ -35,9 +35,9 @@ def main() -> None:
         else:
             new_content += c
 
-    print("---\n")
+    print("---")
     print(new_content)
-    print("\n---")
+    print("---")
 
     new_name = input("Enter your new file name (or empty): ")
     if new_name != "":

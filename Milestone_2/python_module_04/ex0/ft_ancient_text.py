@@ -10,7 +10,7 @@ def main() -> None:
     filename = sys.argv[1]
 
     print("=== Cyber Archives Recovery ===")
-    print(f"Accesing file '{filename}'")
+    print(f"Accessing file '{filename}'")
 
     try:
         file: typing.IO[str] = open(filename, "r")
@@ -18,12 +18,13 @@ def main() -> None:
         print(f"Error opening file '{filename}': {err}")
         return
 
-    print("---\n")
-    print(file.read(), end="")
-    print("\n---")
-
-    file.close()
-    print(f"File '{filename}' closed.")
+    try:
+        print("---")
+        print(file.read(), end="")
+        print("---")
+    finally:
+        file.close()
+        print(f"File '{filename}' closed.")
 
 
 if __name__ == "__main__":
