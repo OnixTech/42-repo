@@ -4,7 +4,7 @@ import abc
 
 class DataProcessor(abc.ABC):
 
-    def __init__(self, data=None):
+    def __init__(self) -> None:
         self._data: list[str] = []
         self._rank: int = 0
 
@@ -42,7 +42,7 @@ class NumericProcessor(DataProcessor):
         return False
 
     def ingest(self, data: int | float | list[int | float]) -> None:
-        if self.validate(data) == False:
+        if not self.validate(data):
             raise Exception("Improper numeric data")
 
         if isinstance(data, list):
@@ -67,7 +67,7 @@ class TextProcessor(DataProcessor):
         return False
 
     def ingest(self, data: str | list[str]) -> None:
-        if self.validate(data) == False:
+        if not self.validate(data):
             raise Exception("Improper text data")
 
         if isinstance(data, list):
@@ -75,6 +75,7 @@ class TextProcessor(DataProcessor):
                 self._data.append(item)
         else:
             self._data.append(data)
+
 
 class LogProcessor(DataProcessor):
 
@@ -84,7 +85,7 @@ class LogProcessor(DataProcessor):
 
         if isinstance(data, list):
             for item in data:
-               if not self._is_dict(item):
+                if not self._is_dict(item):
                     return False
             return True
 
@@ -109,9 +110,11 @@ class LogProcessor(DataProcessor):
 
         if isinstance(data, list):
             for item in data:
-                self._data.append(str(item))
+                values = list(item.values())
+                self._data.append(values[0] + ": " + values[1])
         else:
-            self._data.append(str(data))
+            values = list(data.values())
+            self._data.append(values[0] + ": " + values[1])
 
 
 def main() -> None:
@@ -129,13 +132,12 @@ def main() -> None:
         print(f"Got exception: {err}")
 
     print("Processing data: [1, 2, 3, 4, 5]")
-    numbers = [1, 2, 3, 4, 5]
+    numbers: list[int | float] = [1, 2, 3, 4, 5]
     numeric.ingest(numbers)
     print("Extracting 3 values")
-    for i in range(0, 3):
+    for _ in range(3):
         num_o = numeric.output()
         print(f"Numeric value {num_o[0]}: {num_o[1]}")
-        i += 1
 
     print("Testing Text Processor...")
     text = TextProcessor()
