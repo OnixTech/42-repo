@@ -5,6 +5,7 @@ from . import elements as alchemy_elements
 healing = "Healing potion brewed with "
 strength = "Strength potion brewed with "
 
+
 def healing_potion() -> str:
     earth = alchemy_elements.create_earth()
     air = alchemy_elements.create_air()
